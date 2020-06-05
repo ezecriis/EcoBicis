@@ -313,6 +313,38 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 /*--------------------------------------------------------------
+# Login Section
+--------------------------------------------------------------*/
+.login {
+  background: url("../img/background/wheel.jpg") center top no-repeat;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+}
+
+a {
+  color: #4fa6d5;
+}
+
+a:hover {
+  color: #45beff;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, .font-primary {
+  font-family: "Roboto", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Register Section
+--------------------------------------------------------------*/
+.register {
+  background: url("../img/background/cyclin-hd.jpg") center top no-repeat;
+}
+
+/*--------------------------------------------------------------
 # Hero Section background
 --------------------------------------------------------------*/
 #hero {
@@ -329,7 +361,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   top: 0;
   width: 130%;
   height: 95%;
-  background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("../img/bike2.jpg") center top no-repeat;
+  background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("../img/background/bike2.jpg") center top no-repeat;
   z-index: 0;
   border-radius: 0 0 50% 50%;
   transform: translateX(-50%) rotate(0deg);
