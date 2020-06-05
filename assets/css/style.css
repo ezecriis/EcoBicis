@@ -319,22 +319,9 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   background: url("../img/background/wheel.jpg") center top no-repeat;
 }
 
-body {
+.login-leters {
   font-family: "Open Sans", sans-serif;
-  color: white;
-}
-
-a {
-  color: #4fa6d5;
-}
-
-a:hover {
-  color: #45beff;
-  text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6, .font-primary {
-  font-family: "Roboto", sans-serif;
+  color: white
 }
 
 /*--------------------------------------------------------------
@@ -342,6 +329,11 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 --------------------------------------------------------------*/
 .register {
   background: url("../img/background/cyclin-hd.jpg") center top no-repeat;
+}
+
+.register-leters {
+  font-family: "Open Sans", sans-serif;
+  color: white
 }
 
 /*--------------------------------------------------------------
