@@ -92,25 +92,9 @@
                         <div class="booking-form">
                             <br />
                             <br />
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="login-leters">Nombre</span>
-                                            <input class="form-control" type="text" placeholder="Escriba su nombre">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="login-leters">Email</span>
-                                            <input class="form-control" type="email" placeholder="Escriba su correo">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="login-leters">Telefono</span>
-                                    <input class="form-control" type="tel" placeholder="Escriba su nro telefonico">
-                                </div>
+                            <br />
+                            <br />
+                            <form class="col-12 p-4 border border-warning">
                                 <div class="form-group">
                                     <span class="login-leters">Lugar</span>
                                     <input class="form-control" type="text" placeholder="Escriba donde esta">
@@ -119,71 +103,12 @@
                                     <span class="login-leters">Destino</span>
                                     <input class="form-control" type="text" placeholder="Escriba a donde va">
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <span class="login-leters">Fecha</span>
-                                            <input class="form-control" type="date" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="login-leters">Hora</span>
-                                                    <select class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-                                                        <option>8</option>
-                                                        <option>9</option>
-                                                        <option>10</option>
-                                                        <option>11</option>
-                                                        <option>12</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="login-leters">Min</span>
-                                                    <select class="form-control">
-                                                        <option>05</option>
-                                                        <option>10</option>
-                                                        <option>15</option>
-                                                        <option>20</option>
-                                                        <option>25</option>
-                                                        <option>30</option>
-                                                        <option>35</option>
-                                                        <option>40</option>
-                                                        <option>45</option>
-                                                        <option>50</option>
-                                                        <option>55</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <span class="login-leters">AM/PM</span>
-                                                    <select class="form-control">
-                                                        <option>AM</option>
-                                                        <option>PM</option>
-                                                    </select>
-                                                    <span class="select-arrow"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-btn">
                                     <button class="submit-btn">A pedalear!</button>
                                 </div>
                             </form>
+                            <br />
+                            <br />
                             <br />
                             <br />
                         </div>

@@ -45,24 +45,24 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="index.html"><span>eco bicis</span></a></h1>
+        <h1 class="text-light"><a href="index.php"><span>eco bicis</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li class="active"><a href="portfolio.html">Portfolio</a></li>
-          <!-- <li><a href="team.html">Team</a></li> -->
-          <!-- <li><a href="blog.html">Blog</a></li> -->
-          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="about.php">About Us</a></li>
+          <li><a href="services.php">Services</a></li>
+          <li class="active"><a href="portfolio.php">Portfolio</a></li>
+          <!-- <li><a href="team.php">Team</a></li> -->
+          <!-- <li><a href="blog.php">Blog</a></li> -->
+          <li><a href="contact.php">Contacto</a></li>
           <li class="drop-down"><a href="#">Loguin</a>
             <ul>
-              <li><a href="web/registro.html">Registrarce</a></li>
-              <li><a href="web/login.html">Iniciar sesion</a></li>
+              <li><a href="web/registro.php">Registrarce</a></li>
+              <li><a href="web/login.php">Iniciar sesion</a></li>
             </ul>
           </li>
         </ul>
@@ -80,7 +80,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Portfolio</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li>Portfolio</li>
           </ol>
         </div>
