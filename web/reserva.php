@@ -44,21 +44,21 @@
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="../index.html"><span>Eco bicis</span></a></h1>
+                <h1 class="text-light"><a href="../index.php"><span>Eco bicis</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="../index.html">Home</a></li>
-                    <li><a href="../about.html">Sobre nosotros</a></li>
-                    <li><a href="../services.html">Services</a></li>
-                    <li><a href="../portfolio.html">Portfolio</a></li>
-                    <li><a href="../contact.html">Contacto</a></li>
+                    <li class="active"><a href="../index.php">Home</a></li>
+                    <li><a href="../about.php">Sobre nosotros</a></li>
+                    <li><a href="../services.php">Services</a></li>
+                    <li><a href="../portfolio.php">Portfolio</a></li>
+                    <li><a href="../contact.php">Contacto</a></li>
                     <li class="drop-down"><a href="#">Loguin</a>
                         <ul>
-                            <li><a href="../web/registro.html">Registrarce</a></li>
+                            <li><a href="../web/registro.php">Registrarce</a></li>
                             <li><a href="#">Iniciar sesion</a></li>
                         </ul>
                     </li>
@@ -77,7 +77,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Reserva</h2>
                     <ol>
-                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.php">Home</a></li>
                         <li>Reserva</li>
                     </ol>
                 </div>
@@ -94,14 +94,14 @@
                             <br />
                             <br />
                             <br />
-                            <form class="col-12 p-4 border border-warning">
+                            <form class="col-12 p-4 border border-warning" action="../web/reserva2.php" method="post">
                                 <div class="form-group">
                                     <span class="login-leters">Lugar</span>
-                                    <input class="form-control" type="text" placeholder="Escriba donde esta">
+                                    <input class="form-control" name="origen" type="text" placeholder="Escriba donde esta">
                                 </div>
                                 <div class="form-group">
                                     <span class="login-leters">Destino</span>
-                                    <input class="form-control" type="text" placeholder="Escriba a donde va">
+                                    <input class="form-control" name="destino" type="text" placeholder="Escriba a donde va">
                                 </div>
                                 <div class="form-btn">
                                     <button class="submit-btn">A pedalear!</button>
@@ -138,9 +138,9 @@
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Links utiles</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="about.html">Sobre nosotros</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="services.html">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Politica y privacidad</a></li>
                         </ul>
