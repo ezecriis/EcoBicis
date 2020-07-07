@@ -1,6 +1,5 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -69,102 +68,84 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Registro</h2>
+                    <h2>Historial</h2>
                     <ol>
                         <li><a href="../index.php">Home</a></li>
-                        <li>Registro</li>
+                        <li>Historial</li>
                     </ol>
                 </div>
 
             </div>
         </section><!-- End About Us Section -->
 
-        <div class="register">
-            <div class="container">
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-
-                <div class="register-leters">
-                    <div class="row">
-                        <div class="col">
-                        </div>
-
-                        <div class="col-5 p-4 border border-warning" id="nuevoCliente">
-                            <h4 aling="center">Registro</h4>
-                            <form action="../web/login2.php" method="post">
-
-                                <div class="form-group">
-                                    <label>Nombre:</label>
-                                    <input class="form-control" type="text" name="nombre" maxlength="25" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Apellido:</label>
-                                    <input class="form-control" type="text" name="apellido" maxlength="30" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email:</label>
-                                    <input class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" maxlength="40" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Telefono:</label>
-                                    <input class="form-control" type="number" name="telefono" maxlength="20" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Sexo:</label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="hombre">Hombre</label>
-                                    <input type="radio" name="sexo" id="hombre" value="Hombre">
-                                    <label for="mujer">Mujer</label>
-                                    <input type="radio" name="sexo" id="mujer" value="Mujer">
-                                </div>
-                                <div class="form-group">
-                                    <label>CUIL:</label>
-                                    <input class="form-control" type="number" name="cuil" maxlength="11" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Contraseña:</label>
-                                    <input class="form-control" type="password" name="pass" minlength="5" required>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-sm btn-block" type="submit" name="enviar" id="enviar">Registrar</button>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-sm btn-block" type="reset" value="borrar" name="reset" id="reset">Reset</button>
-                                </div>
-                            </form>
-                            <?php
-                            if (isset($_GET['error']) == 7) {
-                                echo "<div class='alert alert-danger' role='alert'>Imposible registrarce, CORREO O CUIL YA EXISTENTES.</div>";
-                            }
-                            ?>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                </div>
-
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-            </div>
-        </div>
-
     </main><!-- End #main -->
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">KM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
 
     <!-- ======= Footer ======= -->
     <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -242,7 +223,6 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    <script src="./ecobicis/FormularioContacto/app.js"></script>
 
 </body>
 

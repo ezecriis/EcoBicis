@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group">
                   <label>Contraseña:</label>
-                  <input class="form-control" type="password" name="pass" required>
+                  <input class="form-control" type="password" name="pass" minlength="5" required>
                 </div>
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="dropdownCheck">
