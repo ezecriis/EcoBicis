@@ -14,9 +14,7 @@
     <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -115,9 +113,16 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ======= Maps ======= -->
+            <div class="map mt-2">
+                <div class="container-fluid p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
+            </div> <!-- End maps -->
         </div>
     </main> <!-- End #main -->
-
 
     <!-- ======= Footer ======= -->
     <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -166,8 +171,7 @@
                             <a href="https://twitter.com/explore" class="twitter"><i class="bx bxl-twitter"></i></a>
                             <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
                             <a href="https://www.instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i
-                                    class="bx bxl-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                         </div>
                     </div>
 
