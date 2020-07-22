@@ -52,10 +52,8 @@
         <ul>
           <li><a href="index.php">Home</a></li>
           <li class="active"><a href="about.php">Sobre nosotros</a></li>
-          <li><a href="services.php">Services</a></li>
+          <li><a href="servicio.php">Services</a></li>
           <li><a href="portfolio.php">Portfolio</a></li>
-          <!-- <li><a href="team.php">Team</a></li> -->
-          <!-- <li><a href="blog.php">Blog</a></li> -->
           <li><a href="contact.php">Contacto</a></li>
           <li class="drop-down"><a href="#">Loguin</a>
             <ul>
@@ -92,22 +90,22 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="assets/img/aboutHD.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <h3>Somos un equipo que se adapta a las necesidades de nuestros clientes.</h3>
+            <h3>Somos un equipo dedicados al bien estar del planeta.</h3>
             <p class="font-italic">
-              Con el fin de desarrollar lo que nuestros clientes quieran... 
+              Con el fin de desarrollar herramientas para el ecosistema.. 
             </p>
             <ul>
-              <li><i class="icofont-check-circled"></i> Podemos darte una idea, guiarte en el proyecto que todavia no estes seguro.</li>
-              <li><i class="icofont-check-circled"></i> Solo hacenos saber que es lo que te gustaria que desarroyemos.</li>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="icofont-check-circled"></i> Nos guiamos y orientamos a nuestros clientes a no dañar mas el ecosistema.</li>
+              <li><i class="icofont-check-circled"></i> Realizamos bicicletas ecosustentanbles.</li>
+              <li><i class="icofont-check-circled"></i> Evitamos el uso de la materia prima para no contaminar el medio ambiente.</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              Con el fin de ño dañar el planeta tierra, comenzamos a emprender este pequeño cambio para la sociedad,
+              la idea es que se descontamine el planeta tierra, asi descongestionando la via publica de vehiculos y 
+              poder bicletear en tu bicicleta sustentable. 
             </p>
           </div>
         </div>
@@ -177,7 +175,7 @@
 
           <div class="progress">
             <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-              <span class="skill">Riesgo humano <i class="val">55%</i></span>
+              <span class="skill">Descontaminacion <i class="val">55%</i></span>
             </div>
           </div>
 
@@ -210,8 +208,8 @@
 
           <div class="testimonial-item">
             <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
+            <h3>Sara Gomez</h3>
+            <h4>Diseñadora</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
               Desde que comence a usar las eco bicis he notado cambios en mi cuerpo, como un mejor estado fisico y me siento mucho mejor conmigo misma.
@@ -221,8 +219,8 @@
 
           <div class="testimonial-item">
             <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
+            <h3>Carla Peterson</h3>
+            <h4>Administrativa</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
               Empece a usar las ecobicis con el fin de ahorrar dinero, y termine ahorrando tiempo y diniero ya que no voy mas al gimnasio porque entreno con las ecobicis.
@@ -243,8 +241,8 @@
 
           <div class="testimonial-item">
             <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
+            <h3>Juan Carlo</h3>
+            <h4>Ingeniero en sistemas</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
               Amo las bicis sustentable, de esta manera ahorramos el uso del transporte publico y al mismo tiempo no se degrada tanto el medio ambiente.
@@ -261,22 +259,6 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="footer-top">
       <div class="container">
@@ -329,7 +311,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">Cristian Ezequiel</a>
+        Designed by <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/">Cristian Ezequiel</a>
       </div>
     </div>
   </footer><!-- End Footer -->
