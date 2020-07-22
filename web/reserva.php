@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+//if (empty($_SESSION['nombre'])) {
+//    echo "INICIA SESION";
+//}
+?>
 <html lang="en">
 
 <head>
@@ -49,17 +55,32 @@
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="../index.php">Home</a></li>
-                    <li><a href="../about.php">Sobre nosotros</a></li>
-                    <li><a href="../services.php">Services</a></li>
-                    <li><a href="../portfolio.php">Portfolio</a></li>
-                    <li><a href="../contact.php">Contacto</a></li>
-                    <li class="drop-down"><a href="#">Loguin</a>
-                        <ul>
-                            <li><a href="../web/registro.php">Registrarce</a></li>
-                            <li><a href="#">Iniciar sesion</a></li>
-                        </ul>
-                    </li>
+                    <li class="active"><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre nosotros</a></li>
+                    <li><a href="servicio.php">Services</a></li>
+                    <li><a href="portfolio.php">Portfolio</a></li>
+                    <!-- <li><a href="team.php">Team</a></li> -->
+                    <!-- <li><a href="blog.php">Blog</a></li> -->
+                    <li><a href="contact.php">Contacto</a></li>
+                    <?php
+                    if (!empty($_SESSION['nombre'])) {
+                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                        echo "<ul>";
+                        echo "<li><a href='../web/micuenta.php'>Mi Cuenta</a></li>";
+                        echo "<li><a href='../web/reserva.php'>Reserva</a></li>";
+                        echo "<li><a href='../web/historial.php'>Historial</a></li>";
+                        echo "<li><a href='../web/logout.php'>Cerrar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    } else {
+                        echo "<li class='drop-down'><a href='#'>Login</a>";
+                        echo "<ul>";
+                        echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    }
+                    ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
