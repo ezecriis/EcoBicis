@@ -120,9 +120,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="hombre">Hombre</label>
-                                    <input type="radio" name="sexo" id="hombre" value="Hombre">
+                                    <input type="radio" name="sexo" id="hombre" value="Hombre" required>
                                     <label for="mujer">Mujer</label>
-                                    <input type="radio" name="sexo" id="mujer" value="Mujer">
+                                    <input type="radio" name="sexo" id="mujer" value="Mujer" required>
                                 </div>
                                 <div class="form-group">
                                     <label>CUIL:</label>
@@ -142,6 +142,9 @@
                             <?php
                             if (isset($_GET['error']) == 7) {
                                 echo "<div class='alert alert-danger' role='alert'>Imposible registrarce, CORREO O CUIL YA EXISTENTES.</div>";
+                            }
+                            else {
+                                include("correo.php");
                             }
                             ?>
                         </div>
@@ -242,7 +245,7 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    <script src="./ecobicis/FormularioContacto/app.js"></script>
+    <script src="./ecobicis/assets/js/FormularioContacto/app.js"></script> -->
 
 </body>
 
