@@ -4,7 +4,6 @@ session_start();
 //if (empty($_SESSION['nombre'])) {
 //    echo "INICIA SESION";
 //}
-echo session_status();
 ?>
 <html lang="en">
 
@@ -61,8 +60,6 @@ echo session_status();
           <li><a href="about.php">Sobre nosotros</a></li>
           <li><a href="servicio.php">Services</a></li>
           <li><a href="portfolio.php">Portfolio</a></li>
-          <!-- <li><a href="team.php">Team</a></li> -->
-          <!-- <li><a href="blog.php">Blog</a></li> -->
           <li><a href="contact.php">Contacto</a></li>
           <?php
           if (!empty($_SESSION['nombre'])) {
@@ -154,7 +151,7 @@ echo session_status();
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">¿Como me registro?</a></h4>
+              <h4 class="title"><a href="web/registro.php">¿Como me registro?</a></h4>
               <p class="description">Segui el paso a paso para inscribirte en el sistema.</p>
             </div>
           </div>
@@ -162,7 +159,7 @@ echo session_status();
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">¿Como utilizar el sistema?</a></h4>
+              <h4 class="title"><a href="web/utilizacionSistema.php">¿Como utilizar el sistema?</a></h4>
               <p class="description">Es muy simple!</p>
             </div>
           </div>
@@ -170,7 +167,7 @@ echo session_status();
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Mapa de estaciones y disponibilidad de bicicletas</a></h4>
+              <h4 class="title"><a href="web/utilizacionSistema">Mapa de estaciones y disponibilidad de bicicletas</a></h4>
               <p class="description">Consulta las estaciones</p>
             </div>
           </div>
