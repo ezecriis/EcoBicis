@@ -3,6 +3,7 @@ session_start();
 $cuil = $_SESSION['cuil'];
 $origen = $_POST['origen'];
 $destino = $_POST['destino'];
+$fecha = date('d-m-y');
 
 //$pass_provisoria = rand(0000, 9999);
 
@@ -12,7 +13,7 @@ try {
     $conexion->exec("SET CHARACTER SET UTF8");
 
 
-    $sql = "INSERT INTO reservas (cuil, origen, destino) VALUES ('$cuil', '$origen', '$destino')";
+    $sql = "INSERT INTO reservas (cuil, origen, destino, fecha) VALUES ('$cuil', '$origen', '$destino', '$fecha')";
 
     $consulta = $conexion->prepare($sql);
     $consulta->execute();
