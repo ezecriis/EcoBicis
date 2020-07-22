@@ -1,11 +1,18 @@
 <!DOCTYPE html>
+<?php
+session_start();
+//if (empty($_SESSION['nombre'])) {
+//    echo "INICIA SESION";
+//}
+echo session_status();
+?>
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>West Ecobicis - Registro</title>
+    <title>West Ecobicis - Historial</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -44,17 +51,31 @@
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="../index.php">Home</a></li>
-                    <li><a href="../about.php">Sobre nosotros</a></li>
-                    <li><a href="../services.php">Services</a></li>
-                    <li><a href="../portfolio.php">Portfolio</a></li>
-                    <li><a href="../contact.php">Contacto</a></li>
-                    <li class="drop-down"><a href="#">Loguin</a>
-                        <ul>
-                            <li><a href="#">Registrarce</a></li>
-                            <li><a href="../web/login.php">Iniciar sesion</a></li>
-                        </ul>
-                    </li>
+                    <li class="active"><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre nosotros</a></li>
+                    <li><a href="servicio.php">Services</a></li>
+                    <li><a href="portfolio.php">Portfolio</a></li>
+                    <li><a href="contact.php">Contacto</a></li>
+                    <?php
+                    if (!empty($_SESSION['nombre'])) {
+                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                        echo "<ul>";
+                        echo "<li><a href='../micuenta.php'>Mi Cuenta</a></li>";
+                        echo "<li><a href='../web/reserva.php'>Reserva</a></li>";
+                        echo "<li><a href='../web/historial.php'>Historial</a></li>";
+                        echo "<li><a href='../web/historialAdmin.php'>Admin</a></li>";
+                        echo "<li><a href='../web/logout.php'>Cerrar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    } else {
+                        echo "<li class='drop-down'><a href='#'>LogIn</a>";
+                        echo "<ul>";
+                        echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    }
+                    ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -80,72 +101,46 @@
 
     </main><!-- End #main -->
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">KM</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
+    <?php
+    try {
+
+        $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexion->exec("SET CHARACTER SET UTF8");
+
+        $sql = "SELECT * FROM reservas where cuil = " . $_SESSION['cuil'] . "";
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+
+        echo "<table class = 'table table-striped'>";
+        echo "<tr>";
+        echo "<td><strong>FECHA</strong></td>";
+        echo "<td><strong>ORIGEN</strong></td>";
+        echo "<td><strong>DESTINO</strong></td>";
+        echo "<td><strong>N° RESERVA</strong></td>";
+        echo "<td>";
+        echo "<td>";
+        echo "</td>";
+        echo "<td>";
+        echo "</td>";
+        echo "</td>";
+        echo "</tr>";
+        while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
+
+            echo "<tr>";
+            echo "<td>" . $fila['fecha'] . "</td>";
+            echo "<td>" . $fila['origen'] . "</td>";
+            echo "<td>" . $fila['destino'] . "</td>";
+            echo "<td>" . $fila['id_reserva'] . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } catch (Exception $ex) {
+        echo $ex->getMessage();
+        echo $ex->getLine();
+    }
+    ?>
 
     <!-- ======= Footer ======= -->
     <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
