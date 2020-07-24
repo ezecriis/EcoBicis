@@ -52,7 +52,7 @@
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-          <li><a href="index.php">Home</a></li>
+          <li><a href="index.php">Inicio</a></li>
           <li><a href="about.php">Sobre nosotros</a></li>
           <li><a href="servicio.php">Services</a></li>
           <li class="active"><a href="portfolio.php">Portfolio</a></li>
@@ -78,7 +78,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Portfolio</h2>
           <ol>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li>Portfolio</li>
           </ol>
         </div>
@@ -221,22 +221,6 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -244,7 +228,7 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Links utiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre nosotros</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>

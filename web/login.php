@@ -15,9 +15,7 @@
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +32,8 @@
 </head>
 
 <body>
-  <?php //include "../includes/nav.php"; ?>
+  <?php //include "../includes/nav.php"; 
+  ?>
 
   <header id="header" class="fixed-top ">
     <div class="container">
@@ -47,7 +46,7 @@
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="../index.php">Home</a></li>
+          <li class="active"><a href="../index.php">Inicio</a></li>
           <li><a href="../about.php">Sobre nosotros</a></li>
           <li><a href="../services.php">Services</a></li>
           <li><a href="../portfolio.php">Portfolio</a></li>
@@ -73,7 +72,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Login</h2>
           <ol>
-            <li><a href="../index.php">Home</a></li>
+            <li><a href="../index.php">Inicio</a></li>
             <li>LogIn</li>
           </ol>
         </div>
@@ -117,8 +116,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                  <button class="btn btn-success btn-sm btn-block" type="submit" name="enviar"
-                    id="enviar">Ingresar</button>
+                  <button class="btn btn-success btn-sm btn-block" type="submit" name="enviar" id="enviar">Ingresar</button>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-danger btn-sm btn-block" type="submit" name="enviar" id="enviar">Login with
@@ -128,18 +126,17 @@
                   <button class="btn btn-primary btn-sm btn-block" type="submit" name="enviar" id="enviar">Login with
                     Facebook</button>
                   <br />
-                  <p>Al registrarse, está indicando que ha leído y está de acuerdo con los <a
-                      href="#" class="ps-hero__content__link">Terminos de uso</a> y <a href="#">Prolitica de privacidad</a>.
+                  <p>Al registrarse, está indicando que ha leído y está de acuerdo con los <a href="#" class="ps-hero__content__link">Terminos de uso</a> y <a href="#">Prolitica de privacidad</a>.
                   </p>
                 </div>
               </form>
-				      <br>
-        	    <br>
-        		<?php
-            		if (isset($_GET['error']) == 1) {
-                	echo "<div class='alert alert-danger' role='alert'>CUIL y/o Contraseña inválida.</div>";
-            		}
-            	?>
+              <br>
+              <br>
+              <?php
+              if (isset($_GET['error']) == 1) {
+                echo "<div class='alert alert-danger' role='alert'>CUIL y/o Contraseña inválida.</div>";
+              }
+              ?>
             </div>
 
             <div class="col">
@@ -180,7 +177,7 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Links utiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
@@ -208,8 +205,7 @@
               <a href="https://twitter.com/explore" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="https://www.instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i
-                  class="bx bxl-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
 

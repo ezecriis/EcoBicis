@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+session_set_cookie_params(60); // 1ms de inactividad
 //if (empty($_SESSION['nombre'])) {
 //    echo "INICIA SESION";
 //}
@@ -51,7 +52,7 @@ echo session_status();
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.php">Home</a></li>
+                    <li class="active"><a href="index.php">Inicio</a></li>
                     <li><a href="about.php">Sobre nosotros</a></li>
                     <li><a href="servicio.php">Services</a></li>
                     <li><a href="portfolio.php">Portfolio</a></li>
@@ -91,7 +92,7 @@ echo session_status();
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Historial</h2>
                     <ol>
-                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="../index.php">Inicio</a></li>
                         <li>Historial</li>
                     </ol>
                 </div>
@@ -152,7 +153,7 @@ echo session_status();
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Links utiles</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>

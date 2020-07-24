@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+// session_set_cookie_params(60); // 1ms de inactividad
 //if (empty($_SESSION['nombre'])) {
 //    echo "INICIA SESION";
 //}
@@ -56,7 +57,7 @@ session_start();
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.php">Home</a></li>
+          <li class="active"><a href="index.php">Inicio</a></li>
           <li><a href="about.php">Sobre nosotros</a></li>
           <li><a href="servicio.php">Services</a></li>
           <li><a href="portfolio.php">Portfolio</a></li>
@@ -174,9 +175,9 @@ session_start();
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-blue">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Uso de Ecobicis</a></h4>
-              <p class="description">Solo comenza a pedalar y listo!</p>
+              <div class="icon"><i class="bx bx-send"></i></div>
+              <h4 class="title"><a href="contact.php">Comunicate con nosotros</a></h4>
+              <p class="description">Envianos un correo para saber mas de los servicios</p>
             </div>
           </div>
 
@@ -325,7 +326,7 @@ session_start();
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Links utiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>

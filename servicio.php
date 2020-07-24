@@ -50,7 +50,7 @@
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-          <li><a href="index.php">Home</a></li>
+          <li><a href="index.php">Inicio</a></li>
           <li><a href="about.php">Sobre nosotros</a></li>
           <li class="active"><a href="">Services</a></li>
           <li><a href="portfolio.php">Portfolio</a></li>
@@ -76,7 +76,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Nuestros servicios</h2>
           <ol>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li>Nuestros servicios</li>
           </ol>
         </div>
@@ -275,22 +275,6 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -298,7 +282,7 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Links utiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre nosotros</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
@@ -335,14 +319,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>West Ecobicis</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/">Cristian Ezequiel</a>
       </div>
     </div>
   </footer><!-- End Footer -->

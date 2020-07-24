@@ -29,6 +29,7 @@ $r = $con->fetch(PDO::FETCH_ASSOC);
 
     if ($r['password'] == $pass) {
         session_start();
+        session_set_cookie_params(60); // 1ms de inactividad
         $_SESSION['nombre'] = $r['nombre'];
         $_SESSION['apellido'] = $r['apellido'];
         $_SESSION['cuil'] = $r['cuil'];
