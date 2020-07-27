@@ -52,7 +52,7 @@
         <ul>
           <li><a href="index.php">Inicio</a></li>
           <li class="active"><a href="about.php">Sobre nosotros</a></li>
-          <li><a href="servicio.php">Services</a></li>
+          <!-- <li><a href="servicio.php">Services</a></li> -->
           <li><a href="portfolio.php">Portfolio</a></li>
           <li><a href="contact.php">Contacto</a></li>
           <li class="drop-down"><a href="#">Loguin</a>
