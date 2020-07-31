@@ -1,7 +1,8 @@
 <?php
 
 $cuil = $_POST['cuil'];
-$pass = $_POST['pass'];
+$salt = md5($_POST['pass']);
+$pass = crypt($_POST['pass'], $salt);
 
 //$pass_entry = md5($pass);
 

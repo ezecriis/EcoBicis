@@ -49,7 +49,7 @@
                     <li><a href="../servicio.php">Services</a></li>
                     <li><a href="../portfolio.php">Portfolio</a></li>
                     <li><a href="../contact.php">Contacto</a></li>
-                    <li class="drop-down"><a href="#">Loguin</a>
+                    <li class="drop-down"><a href="#">Login</a>
                         <ul>
                             <li><a href="registro.php">Registrarce</a></li>
                             <li><a href="login.php">Iniciar sesion</a></li>

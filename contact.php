@@ -58,7 +58,7 @@
           <!-- <li><a href="blog.php">Blog</a></li> -->
           <!-- <li class="active"><a href="contact.php">Contact Us</a></li> -->
           <li><a href="contact.php">Contacto</a></li>
-          <li class="drop-down"><a href="#">Loguin</a>
+          <li class="drop-down"><a href="#">Login</a>
             <ul>
               <li><a href="web/registro.php">Registrarce</a></li>
               <li><a href="web/login.php">Iniciar sesion</a></li>

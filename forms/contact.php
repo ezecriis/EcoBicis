@@ -1,41 +1,47 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+/* This is for send a direct message of form Contact.php */
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+use  PHPMailer \ PHPMailer \ PHPMailer ;
+use  PHPMailer \ PHPMailer \ Exception ;
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+/* Files required */
+require '../src/Exception.php';
+require '../src/PHPMailer.php' ;
+require '../src/SMTP.php' ;
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+/* Vars of form contact.php */
+$name = $_POST['name'];
+$email= $_POST['email'];
+$subject=$_POST['subject'];
+$message=$_POST['message'];
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                            // Enable verbose debug output
+    $mail->isSMTP();                                 // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';            // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                        // Enable SMTP authentication
+    $mail->Username   = 'cr.ezequiel24@gmail.com';      // SMTP username
+    $mail->Password   = 'sesion300693';               // SMTP password
+    $mail->SMTPSecure = 'tls';                       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-  echo $contact->send();
-?>
+    //Recipients
+    $mail->setFrom('cr.ezequiel24@gmail.com');
+    $mail->addAddress($email);                       // Add a recipient
+
+    // Content
+    $mail->isHTML(true);                             // Set email format to HTML
+    $mail->Subject = 'ECOBICIS';
+    $mail->Body    = 'Nombre: ' . $name . '<br>' . 'Email: ' . $email . '<br>' . 'sujeto: ' . $subject . '<br>' . 'Mensaje: ' . $message . '<br>' . '</b>';
+    $mail->CharSet='UTF-8';                          // Charset of characters.
+    $mail->send();                                   // Send mail.
+
+    /* Location after of send mail */
+    // header(htmlentities("location:../contact.php?send"));
+} catch (Exception $e) {
+    echo "Hubo un error al enviar el mensaje. {$mail->ErrorInfo}";
+}
