@@ -98,22 +98,21 @@
                         <div class="col-5 p-4 border border-warning" id="nuevoCliente">
                             <h4 aling="center">Registro</h4>
                             <form action="../web/login2.php" method="post">
-
                                 <div class="form-group">
                                     <label>Nombre:</label>
-                                    <input class="form-control" type="text" name="nombre" maxlength="25" required>
+                                    <input class="form-control" type="text" name="nombre" id="nombre" maxlength="25" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Apellido:</label>
-                                    <input class="form-control" type="text" name="apellido" maxlength="30" required>
+                                    <input class="form-control" type="text" name="apellido" id="apellido" maxlength="30" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" maxlength="40" required>
+                                    <input class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" id="email" maxlength="40" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Telefono:</label>
-                                    <input class="form-control" type="number" name="telefono" maxlength="20" required>
+                                    <input class="form-control" type="number" name="telefono" id="telefono" maxlength="20" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Sexo:</label>
@@ -126,11 +125,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>CUIL:</label>
-                                    <input class="form-control" type="number" name="cuil" maxlength="11" required>
+                                    <input class="form-control" type="number" name="cuil" id="cuil" maxlength="11" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña:</label>
-                                    <input class="form-control" type="password" name="pass" minlength="5" required>
+                                    <input class="form-control" type="password" name="pass" id="pass" minlength="5" required>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary btn-sm btn-block" type="submit" name="enviar" id="enviar">Registrar</button>
