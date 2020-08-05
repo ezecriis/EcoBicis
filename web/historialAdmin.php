@@ -52,11 +52,11 @@ echo session_status();
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.php">Inicio</a></li>
-                    <li><a href="about.php">Sobre nosotros</a></li>
-                    <li><a href="servicio.php">Services</a></li>
-                    <li><a href="portfolio.php">Portfolio</a></li>
-                    <li><a href="contact.php">Contacto</a></li>
+                    <li class="active"><a href="../index.php">Inicio</a></li>
+                    <li><a href="../about.php">Sobre nosotros</a></li>
+                    <li><a href="../servicio.php">Services</a></li>
+                    <li><a href="../portfolio.php">Portfolio</a></li>
+                    <li><a href="../contact.php">Contacto</a></li>
                     <?php
                     // Add admint var
                     if (!empty($_SESSION['nombre'])) {
@@ -116,10 +116,11 @@ echo session_status();
 
         echo "<table class = 'table table-striped'>";
         echo "<tr>";
-        echo "<td><strong>FECHA</strong></td>";
-        echo "<td><strong>ORIGEN</strong></td>";
-        echo "<td><strong>DESTINO</strong></td>";
-        echo "<td><strong>N° RESERVA</strong></td>";
+        echo "<td><strong>USUARIO</strong></td>";
+        echo "<td><strong>CUIL</strong></td>";
+        echo "<td><strong>CORREO</strong></td>";
+        echo "<td><strong>TELEFONO</strong></td>";
+        echo "<td><strong>ACCION</strong></td>";
         echo "<td>";
         echo "<td>";
         echo "</td>";
@@ -134,6 +135,7 @@ echo session_status();
             echo "<td>" . $fila['origen'] . "</td>";
             echo "<td>" . $fila['destino'] . "</td>";
             echo "<td>" . $fila['id_reserva'] . "</td>";
+            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0'>Remove</button></td>";
             echo "</tr>";
         }
 
@@ -154,9 +156,9 @@ echo session_status();
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Links utiles</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../index.php">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../about.php">Sobre nosotros</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../servicio.php">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Politica y privacidad</a></li>
                         </ul>

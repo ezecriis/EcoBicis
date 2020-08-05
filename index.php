@@ -95,8 +95,11 @@ session_start();
       <div class="carousel-item active">
         <div class="carousel-container">
         <?php
-        if (isset($_GET['Var']) == 8) {
+        if (isset($_GET['Var']) === 8) {
           echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!.</div>";
+        }
+        if (isset($_GET['Var']) === 1) {
+          echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!.</div>";
         }
         ?>
           <h2 class="animated fadeInDown">Bienvenido a <span>Eco bicis</span></h2>

@@ -52,11 +52,11 @@ echo session_status();
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.php">Inicio</a></li>
-                    <li><a href="about.php">Sobre nosotros</a></li>
-                    <li><a href="servicio.php">Services</a></li>
-                    <li><a href="portfolio.php">Portfolio</a></li>
-                    <li><a href="contact.php">Contacto</a></li>
+                    <li class="active"><a href="../index.php">Inicio</a></li>
+                    <li><a href="../about.php">Sobre nosotros</a></li>
+                    <li><a href="../servicio.php">Services</a></li>
+                    <li><a href="../portfolio.php">Portfolio</a></li>
+                    <li><a href="../contact.php">Contacto</a></li>
                     <?php
                     if (!empty($_SESSION['nombre'])) {
                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";

@@ -114,6 +114,9 @@
                     Recordar
                   </label>
                 </div>
+                <div class="form-check-label">
+                    <a href="../web/pass_recu.php">¿Olvidaste la contraseña?</a>
+                </div>
                 <br />
                 <div class="form-group">
                   <button class="btn btn-success btn-sm btn-block" type="submit" name="enviar" id="enviar">Ingresar</button>
