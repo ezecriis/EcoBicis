@@ -135,7 +135,8 @@ echo session_status();
             echo "<td>" . $fila['origen'] . "</td>";
             echo "<td>" . $fila['destino'] . "</td>";
             echo "<td>" . $fila['id_reserva'] . "</td>";
-            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0'>Remove</button></td>";
+            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0'><a href='removerUsuario.php'>Remove</a></button></td>";
+            echo "<td><button type='button' class='btn btn-primary btn-rounded btn-sm my-0'><a href='editarUsuario.php'>Editar</button></td>";
             echo "</tr>";
         }
 
