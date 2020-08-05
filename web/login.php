@@ -248,6 +248,5 @@
   <script src="../assets/js/main.js"></script>
 
 </body>
-<?php include "../includes/footer.php"; ?>
 
 </html>
