@@ -40,6 +40,21 @@ session_start();
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+        #mapa {
+            height: 50vh;
+        }
+
+        .h2s {
+            font-size: 20px;
+            padding-right: 4px;
+            color: #212529;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -55,13 +70,11 @@ session_start();
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="index.php">Inicio</a></li>
-                    <li><a href="about.php">Sobre nosotros</a></li>
-                    <li><a href="servicio.php">Services</a></li>
-                    <li><a href="portfolio.php">Portfolio</a></li>
-                    <!-- <li><a href="team.php">Team</a></li> -->
-                    <!-- <li><a href="blog.php">Blog</a></li> -->
-                    <li><a href="contact.php">Contacto</a></li>
+                    <li class="active"><a href="../index.php">Inicio</a></li>
+                    <li><a href="../about.php">Sobre nosotros</a></li>
+                    <li><a href="../servicio.php">Services</a></li>
+                    <li><a href="../portfolio.php">Portfolio</a></li>
+                    <li><a href="../contact.php">Contacto</a></li>
                     <?php
                     if (!empty($_SESSION['nombre'])) {
                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
@@ -96,7 +109,7 @@ session_start();
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Reserva</h2>
                     <ol>
-                        <li><a href="../index.php">Inicio</a></li>
+                        <li><a href="../index.php">Home</a></li>
                         <li>Reserva</li>
                     </ol>
                 </div>
@@ -109,7 +122,6 @@ session_start();
                 <div class="container">
                     <div class="row">
                         <div class="booking-form">
-                            <br />
                             <br />
                             <br />
                             <br />
@@ -129,7 +141,6 @@ session_start();
                             <br />
                             <br />
                             <br />
-                            <br />
                         </div>
                     </div>
                 </div>
@@ -138,11 +149,26 @@ session_start();
             <!-- ======= Maps ======= -->
             <div class="map mt-2">
                 <div class="container-fluid p-0">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-                    </iframe>
+                    <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>-->
+                    <div class="col-md-14">
+                        <div id="mapa"></div>
+                    </div>
                 </div>
-            </div> <!-- End maps -->
-        </div>
+                
+                <br>
+                <br>
+
+                <div class="col-md-14">
+
+                    <h2 class="h2s">Direcciónes de los bicicleteros</h2>
+
+                    <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
+                    <?php include('../web/map/app.php'); ?>
+
+                </div>
+            </div>
+        </div> <!-- End maps -->
     </main> <!-- End #main -->
 
     <!-- ======= Footer ======= -->
@@ -164,9 +190,9 @@ session_start();
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Links utiles</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../index.php">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../about.php">Sobre nosotros</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../services.php">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Politica y privacidad</a></li>
                         </ul>
@@ -186,8 +212,8 @@ session_start();
 
                     <div class="col-lg-4 col-md-6 footer-info">
                         <h3>Sobre nosotros</h3>
-                        <p>Empresa creada con el fin de cuidar el medio ambiente, ofreciendo bicicletas sustentabes para
-                            la sociedad.</p>
+                        <p>Empresa creada con el fin de cuidar el medio ambiente, ofreciendo bicicletas sustentabes para la
+                            sociedad.</p>
                         <div class="social-links mt-3">
                             <a href="https://twitter.com/explore" class="twitter"><i class="bx bxl-twitter"></i></a>
                             <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -230,6 +256,78 @@ session_start();
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcFjePSQivTobOPqBW_vRSveSgxpIUgcI&callback=initMap"></script>
+
+
+    <script type="text/javascript">
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: 'roadmap'
+            };
+
+            map = new google.maps.Map(document.getElementById('mapa'), {
+                mapOptions
+            });
+
+            map.setTilt(50);
+
+            // Crear múltiples marcadores desde la Base de Datos 
+            var marcadores = [
+                <?php include('../web/map/marcadores.php'); ?>
+            ];
+
+            // Creamos la ventana de información para cada Marcador
+            var ventanaInfo = [
+                <?php include('../web/map/info_marcadores.php'); ?>
+            ];
+
+            // Creamos la ventana de información con los marcadores 
+            var mostrarMarcadores = new google.maps.InfoWindow(),
+                marcadores, i;
+
+            // Colocamos los marcadores en el Mapa de Google 
+            for (i = 0; i < marcadores.length; i++) {
+                var position = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: marcadores[i][0],
+                });
+
+                // Colocamos la ventana de información a cada Marcador del Mapa de Google 
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        mostrarMarcadores.setContent(ventanaInfo[i][0]);
+                        mostrarMarcadores.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Centramos el Mapa de Google para que todos los marcadores se puedan ver 
+                map.fitBounds(bounds);
+            }
+
+            // Aplicamos el evento 'bounds_changed' que detecta cambios en la ventana del Mapa de Google, también le configramos un zoom de 14 
+            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                this.setZoom(14);
+                google.maps.event.removeListener(boundsListener);
+            });
+
+        }
+
+        // Lanzamos la función 'initMap' para que muestre el Mapa con Los Marcadores y toda la configuración realizada 
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
