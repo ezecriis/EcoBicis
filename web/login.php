@@ -115,7 +115,7 @@
                   </label>
                 </div>
                 <div class="form-check-label">
-                    <a href="../web/pass_recu.php">¿Olvidaste la contraseña?</a>
+                    <a href="../web/pass_recu.php" class="nav-link">¿Olvidaste la contraseña?</a>
                 </div>
                 <br />
                 <div class="form-group">
