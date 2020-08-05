@@ -25,10 +25,10 @@ $r = $con->fetch(PDO::FETCH_ASSOC);
 
 //$pass_descifrada = password_verify($pass, $r['password']);
 
+$pass_descifrada = $r['password'];
 
 
-
-    if ($r['password'] == $pass) {
+    if (hash_equals($pass_descifrada, $pass)) {
         session_start();
         session_set_cookie_params(60); // 1ms de inactividad
         $_SESSION['nombre'] = $r['nombre'];
