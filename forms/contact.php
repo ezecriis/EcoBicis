@@ -35,13 +35,13 @@ try {
 
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
-    $mail->Subject = 'ECOBICIS';
+    $mail->Subject = 'GRACIAS POR COMUNICARCE CON ECOBICIS';
     $mail->Body    = 'Nombre: ' . $name . '<br>' . 'Email: ' . $email . '<br>' . 'sujeto: ' . $subject . '<br>' . 'Mensaje: ' . $message . '<br>' . '</b>';
     $mail->CharSet='UTF-8';                          // Charset of characters.
     $mail->send();                                   // Send mail.
 
     /* Location after of send mail */
-    // header(htmlentities("location:../contact.php?send"));
+    // header(htmlentities("location:../index.php?send"));
 } catch (Exception $e) {
     echo "Hubo un error al enviar el mensaje. {$mail->ErrorInfo}";
 }
