@@ -13,7 +13,7 @@ echo session_status();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>West Ecobicis - Historial</title>
+    <title>West Ecobicis - Mi cuenta </title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -58,6 +58,7 @@ echo session_status();
                     <li><a href="../portfolio.php">Portfolio</a></li>
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php
+                    // Add admint var
                     if (!empty($_SESSION['nombre'])) {
                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                         echo "<ul>";
@@ -90,10 +91,10 @@ echo session_status();
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Historial</h2>
+                    <h2>Mis datos</h2>
                     <ol>
                         <li><a href="../index.php">Inicio</a></li>
-                        <li>Historial</li>
+                        <li>Mi cuenta</li>
                     </ol>
                 </div>
 
@@ -102,6 +103,9 @@ echo session_status();
 
     </main><!-- End #main -->
 
+    <br>
+    <br>
+
     <?php
     try {
 
@@ -109,16 +113,21 @@ echo session_status();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexion->exec("SET CHARACTER SET UTF8");
 
-        $sql = "SELECT * FROM reservas where cuil = " . $_SESSION['cuil'] . "";
+        $sql = "SELECT * FROM usuarios where cuil = " . $_SESSION['cuil'] . "";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
 
         echo "<table class = 'table table-striped'>";
         echo "<tr>";
-        echo "<td><strong>FECHA</strong></td>";
-        echo "<td><strong>ORIGEN</strong></td>";
-        echo "<td><strong>DESTINO</strong></td>";
-        echo "<td><strong>N° RESERVA</strong></td>";
+        echo "<td><strong>USUARIO</strong></td>";
+        echo "<td><strong>NOMBRE</strong></td>";
+        echo "<td><strong>APELLIDO</strong></td>";
+        echo "<td><strong>CONTRASEÑA</strong></td>";
+        echo "<td><strong>CUIL</strong></td>";
+        echo "<td><strong>CORREO</strong></td>";
+        echo "<td><strong>TELEFONO</strong></td>";
+        echo "<td><strong>SEXO</strong></td>";
+        echo "<td><strong>ACCION</strong></td>";
         echo "<td>";
         echo "<td>";
         echo "</td>";
@@ -129,10 +138,15 @@ echo session_status();
         while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
             echo "<tr>";
-            echo "<td>" . $fila['fecha'] . "</td>";
-            echo "<td>" . $fila['origen'] . "</td>";
-            echo "<td>" . $fila['destino'] . "</td>";
-            echo "<td>" . $fila['id_reserva'] . "</td>";
+            echo "<td>" . $fila['id_usuario'] . "</td>";
+            echo "<td>" . $fila['nombre'] . "</td>";
+            echo "<td>" . $fila['apellido'] . "</td>";
+            echo "<td>" . $fila['password'] . "</td>";
+            echo "<td>" . $fila['cuil'] . "</td>";
+            echo "<td>" . $fila['email'] . "</td>";
+            echo "<td>" . $fila['telefono'] . "</td>";
+            echo "<td>" . $fila['sexo'] . "</td>";
+            echo "<td><button type='button' class='btn btn-primary btn-rounded btn-sm my-0'><a href='editarUsuario.php'>Editar</button></td>";
             echo "</tr>";
         }
 
@@ -142,6 +156,9 @@ echo session_status();
         echo $ex->getLine();
     }
     ?>
+
+    <br>
+    <br>
 
     <!-- ======= Footer ======= -->
     <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -153,9 +170,9 @@ echo session_status();
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Links utiles</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Inicio</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="about.php">Sobre nosotros</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="services.php">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../index.php">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../about.php">Sobre nosotros</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="../servicio.php">Services</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos de servicios</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Politica y privacidad</a></li>
                         </ul>

@@ -110,16 +110,19 @@ echo session_status();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexion->exec("SET CHARACTER SET UTF8");
 
-        $sql = "SELECT * FROM reservas where cuil = " . $_SESSION['cuil'] . "";
+        $sql = "SELECT * FROM usuarios where cuil = " . $_SESSION['cuil'] . "";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
 
         echo "<table class = 'table table-striped'>";
         echo "<tr>";
         echo "<td><strong>USUARIO</strong></td>";
+        echo "<td><strong>NOMBRE</strong></td>";
+        echo "<td><strong>APELLIDO</strong></td>";
         echo "<td><strong>CUIL</strong></td>";
         echo "<td><strong>CORREO</strong></td>";
         echo "<td><strong>TELEFONO</strong></td>";
+        echo "<td><strong>SEXO</strong></td>";
         echo "<td><strong>ACCION</strong></td>";
         echo "<td>";
         echo "<td>";
@@ -131,11 +134,14 @@ echo session_status();
         while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
             echo "<tr>";
-            echo "<td>" . $fila['fecha'] . "</td>";
-            echo "<td>" . $fila['origen'] . "</td>";
-            echo "<td>" . $fila['destino'] . "</td>";
-            echo "<td>" . $fila['id_reserva'] . "</td>";
-            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0'><a href='removerUsuario.php'>Remove</a></button></td>";
+            echo "<td>" . $fila['id_usuario'] . "</td>";
+            echo "<td>" . $fila['nombre'] . "</td>";
+            echo "<td>" . $fila['apellido'] . "</td>";
+            echo "<td>" . $fila['cuil'] . "</td>";
+            echo "<td>" . $fila['email'] . "</td>";
+            echo "<td>" . $fila['telefono'] . "</td>";
+            echo "<td>" . $fila['sexo'] . "</td>";
+            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0'><a href='removerUsuario.php'>Remover</a></button></td>";
             echo "<td><button type='button' class='btn btn-primary btn-rounded btn-sm my-0'><a href='editarUsuario.php'>Editar</button></td>";
             echo "</tr>";
         }
