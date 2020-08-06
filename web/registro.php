@@ -244,7 +244,7 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    <script src="./ecobicis/assets/js/FormularioContacto/app.js"></script> -->
+    <script src="./ecobicis/assets/js/FormularioContacto/app.js"></script>
 
 </body>
 
