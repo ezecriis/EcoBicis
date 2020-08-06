@@ -115,7 +115,7 @@
                 <div class="info-box">
                   <i class="bx bx-map"></i>
                   <h3>Nuesta central</h3>
-                  <p>Av Siempre Viva 1234, Padua, Bs As</p>
+                  <p>Av Siempre Viva 1234, Castelar, Bs As</p>
                 </div>
               </div>
               <div class="col-md-6">
