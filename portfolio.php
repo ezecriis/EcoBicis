@@ -120,9 +120,9 @@
               <img src="assets/img/portfolio/porfolio-22.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h3><a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Web 3">Web 3</a></h3>
+                    title="Bicis 3">Bicis 3</a></h3>
                 <a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Web 3"><i class="icofont-plus"></i></a>
+                  title="Bicis 3"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -156,9 +156,9 @@
               <img src="assets/img/portfolio/porfolio-55.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h3><a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Web 2">Web 2</a></h3>
+                    title="Bicis 2">Bicis 2</a></h3>
                 <a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Web 2"><i class="icofont-plus"></i></a>
+                  title="Bicis 2"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -204,9 +204,9 @@
               <img src="assets/img/portfolio/porfolio-99.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h3><a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Web 1">Web 1</a></h3>
+                    title="Bicis 1">Bicis 1</a></h3>
                 <a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Web 1"><i class="icofont-plus"></i></a>
+                  title="Bicis 1"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
