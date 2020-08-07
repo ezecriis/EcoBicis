@@ -26,7 +26,7 @@ try {
 }
 
 
-$query = "SELECT email FROM usuarios where email = '$email'";
+$query = "SELECT email, cuil FROM usuarios where email = '$email'";
 $con = $conexion->prepare($query);
 $con->execute();
 
@@ -35,6 +35,17 @@ $r = $con->fetch(PDO::FETCH_ASSOC);
 $email_base = $r['email'];
 
 if($email_base = $email){
+
+    $aleatoria = rand(10000,99999);
+
+    $encriptada =  md5($aleatoria);
+    $password = crypt($aleatoria, $encriptada);
+    
+    $cuil = $r['cuil'];
+    
+    $query2 = "UPDATE usuarios SET password = '$password' where cuil = '$cuil'";
+    $con2 = $conexion->prepare($query2);
+    $con2->execute();
 
 try {
     //Server settings
@@ -54,7 +65,8 @@ try {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'ECOBICIS';
-    $mail->Body    = 'Recuperación de contraseña';
+    $mail->Body    = 'Su nueva contraseña es ' . $aleatoria;
+
     $mail->CharSet='UTF-8';                          // Charset of characters.
     $mail->send();                                   // Send mail.
 
