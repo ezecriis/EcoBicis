@@ -151,7 +151,7 @@ session_start();
                                     <button class="btn btn-primary btn-sm btn-block" type="submit" name="enviar" id="enviar">Confirmar</button>
                                 </div>
                                 <div class="form-check-label">
-                                    <a href="../web/edit_pass.php">Cambiar la contraseña</a>
+                                    <a href="../web/edit_pass.php" class="navbar navbar-light bg-light justify-content-center">Cambiar la contraseña</a>
                                 </div>
                             </form>
                             <?php
