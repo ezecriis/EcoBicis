@@ -34,6 +34,10 @@ $pass_descifrada = $r['password'];
         $_SESSION['nombre'] = $r['nombre'];
         $_SESSION['apellido'] = $r['apellido'];
         $_SESSION['cuil'] = $r['cuil'];
+        $_SESSION['admin'] = $r['admin'];
+        $_SESSION['email'] = $r['email'];
+        $_SESSION['sexo'] = $r['sexo'];
+        $_SESSION['telefono'] = $r['telefono'];
         //$_SESSION['rol'] = $r['rol'];
         header("location:../index.php");
     } else {
