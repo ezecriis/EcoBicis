@@ -64,7 +64,7 @@ try {
 
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
-    $mail->Subject = 'ECOBICIS';
+    $mail->Subject = 'RESCUPERACION DE CONTRASEÑA ECOBICIS';
     $mail->Body    = 'Su nueva contraseña es ' . $aleatoria;
 
     $mail->CharSet='UTF-8';                          // Charset of characters.

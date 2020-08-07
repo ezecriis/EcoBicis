@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>West Ecobicis - Inicie sesion</title>
+  <title>West Ecobicis - Recuperacion de contraseña </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -69,10 +69,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Login</h2>
+          <h2>Recuperacion de contraseña</h2>
           <ol>
             <li><a href="../index.php">Inicio</a></li>
-            <li>LogIn</li>
+            <li>Recuperacion de contraseña</li>
           </ol>
         </div>
 
