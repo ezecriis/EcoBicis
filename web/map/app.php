@@ -12,11 +12,8 @@
   echo "<table class='table table-dark'>
           <thead class='thead-dark'>
             <tr>
-              <th scope='col'>Nombre</th>
+              <th scope='col'>Localidad</th>
               <th scope='col'>Dirección</th>
-              <th scope='col'>Cantidad</th>
-              <th scope='col'>Disponibles</th>
-              <th scope='col'>País</th>
             </tr>
             </thead>
             <tbody>";
@@ -25,9 +22,6 @@
       echo "<tr>";
       echo "<td scope='col'>" . $row['nombre'] . "</td>";
       echo "<td scope='col'>" . preg_replace('/\\\\u([\da-fA-F]{4})/', '&#x\1;', $row['direccion']) . "</td>";
-      echo "<td scope='col'>" . $row['stock'] . "</td>";
-      echo "<td scope='col'>" . $row['disponibles'] . "</td>";
-      echo "<td scope='col'>" . $row['pais'] . "</td>";
       echo "</tr>";
   }
   echo "</tbody></table>";
