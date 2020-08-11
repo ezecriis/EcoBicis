@@ -72,28 +72,48 @@ session_start();
                 <ul>
                     <li class="active"><a href="../index.php">Inicio</a></li>
                     <li><a href="../about.php">Sobre nosotros</a></li>
-                    <li><a href="../servicio.php">Services</a></li>
                     <li><a href="../portfolio.php">Portfolio</a></li>
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php
-                    if (!empty($_SESSION['nombre'])) {
-                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                        echo "<ul>";
-                        echo "<li><a href='../web/micuenta.php'>Mi Cuenta</a></li>";
-                        echo "<li><a href='../web/reserva.php'>Reserva</a></li>";
-                        echo "<li><a href='../web/historial.php'>Historial</a></li>";
-                        echo "<li><a href='../web/logout.php'>Cerrar sesion</a></li>";
-                        echo "</ul>";
-                        echo "</li>";
-                    } else {
-                        echo "<li class='drop-down'><a href='#'>Login</a>";
-                        echo "<ul>";
-                        echo "<li><a href='web/registro.php'>Registrarse</a></li>";
-                        echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
-                        echo "</ul>";
-                        echo "</li>";
-                    }
-                    ?>
+
+          if (!empty($_SESSION['id_rol'])) {
+
+            $rol = $_SESSION['id_rol'];
+
+
+            switch ($rol) {
+              case 1:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href=''>Bicicletas</a></li>"; // Add a href new file
+                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='entrega.php'>Entrega</a></li>";
+                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 2:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
+                echo "<li><a href='reserva.php'>Reserva</a></li>";
+                echo "<li><a href='historial.php'>Historial</a></li>";
+                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+            }
+          } else {
+            echo "<li class='drop-down'><a href='#'>Login</a>";
+            echo "<ul>";
+            echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+            echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+            echo "</ul>";
+            echo "</li>";
+          }
+
+          ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -125,7 +145,7 @@ session_start();
                             <br />
                             <br />
                             <br />
-                            <form class="col-12 p-4 border border-warning" action="../web/reserva2.php" method="post">
+                            <form action="reservaSend.php" class="col-12 p-4 border border-warning" action="../web/reserva2.php" method="post">
                                 <div class="form-group">
                                     <span class="login-leters">Lugar</span>
                                     <input class="form-control" name="origen" type="text" placeholder="Escriba donde esta">

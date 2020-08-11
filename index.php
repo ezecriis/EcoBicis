@@ -63,15 +63,35 @@ session_start();
           <li><a href="portfolio.php">Portfolio</a></li>
           <li><a href="contact.php">Contacto</a></li>
           <?php
-          if (!empty($_SESSION['nombre'])) {
-            echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-            echo "<ul>";
-            echo "<li><a href='web/micuenta.php'>Mi Cuenta</a></li>";
-            echo "<li><a href='web/reserva.php'>Reserva</a></li>";
-            echo "<li><a href='web/historial.php'>Historial</a></li>";
-            echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
-            echo "</ul>";
-            echo "</li>";
+
+          if (!empty($_SESSION['id_rol'])) {
+
+            $rol = $_SESSION['id_rol'];
+
+
+            switch ($rol) {
+              case 1:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href=''>Bicicletas</a></li>"; // Add a href new file
+                echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='web/entrega.php'>Entrega</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 2:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
+                echo "<li><a href='web/reserva.php'>Reserva</a></li>";
+                echo "<li><a href='web/historial.php'>Historial</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+            }
           } else {
             echo "<li class='drop-down'><a href='#'>Login</a>";
             echo "<ul>";
@@ -80,6 +100,7 @@ session_start();
             echo "</ul>";
             echo "</li>";
           }
+
           ?>
         </ul>
       </nav><!-- .nav-menu -->
@@ -94,14 +115,14 @@ session_start();
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
-        <?php
-        if (isset($_GET['Var']) === 8) {
-          echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!.</div>";
-        }
-        if (isset($_GET['Var']) === 1) {
-          echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!.</div>";
-        }
-        ?>
+          <?php
+          if (isset($_GET['Var']) === 8) {
+            echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!</div>";
+          }
+          if (isset($_GET['Var']) === 1) {
+            echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!</div>";
+          }
+          ?>
           <h2 class="animated fadeInDown">Bienvenido a <span>Eco bicis</span></h2>
           <p class="animated fadeInUp">Sistema de bicicletas sustentabe.</p>
           <a href="" class="btn-get-started animated fadeInUp">Leer mas</a>
@@ -147,10 +168,10 @@ session_start();
     <section class="services">
       <div class="container">
         <!-- <?php
-        // if (isset($_GET['Var']) == 8) {
-          // echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!.</div>";
-        // }
-        ?> -->
+              // if (isset($_GET['Var']) == 8) {
+              // echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!.</div>";
+              // }
+              ?> -->
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
@@ -171,7 +192,7 @@ session_start();
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="web/utilizacionSistema">Mapa de estaciones y disponibilidad de bicicletas</a></h4>
+              <h4 class="title"><a href="web/map.php">Mapa de estaciones y disponibilidad de bicicletas</a></h4>
               <p class="description">Consulta las estaciones</p>
             </div>
           </div>
