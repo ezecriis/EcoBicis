@@ -77,43 +77,44 @@ session_start();
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php
 
-          if (!empty($_SESSION['id_rol'])) {
+                    if (!empty($_SESSION['id_rol'])) {
 
-            $rol = $_SESSION['id_rol'];
+                        $rol = $_SESSION['id_rol'];
 
 
-            switch ($rol) {
-              case 1:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='historialAdmin.php'>Usuarios</a></li>";
-                echo "<li><a href='reserva.php'>Bicicletas</a></li>"; // Add a href new file
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-              case 2:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
-                echo "<li><a href='reserva.php'>Reserva</a></li>";
-                echo "<li><a href='historial.php'>Historial</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-            }
-          } else {
-            echo "<li class='drop-down'><a href='#'>Login</a>";
-            echo "<ul>";
-            echo "<li><a href='web/registro.php'>Registrarse</a></li>";
-            echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
-            echo "</ul>";
-            echo "</li>";
-          }
+                        switch ($rol) {
+                            case 1:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='historialAdmin.php'>Usuarios</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                            case 2:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
+                                echo "<li><a href='reserva.php'>Reserva</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='historial.php'>Historial</a></li>";
+                                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                        }
+                    } else {
+                        echo "<li class='drop-down'><a href='#'>Login</a>";
+                        echo "<ul>";
+                        echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    }
 
-          ?>
+                    ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -140,6 +141,17 @@ session_start();
         <!-- ======= Maps ======= -->
         <div class="reservation">
             <div class="map mt-2">
+                <div class="col-md-14">
+                <br>
+
+                    <h2 class="h2s">Direcciónes de los bicicleteros</h2>
+                    <br>
+
+                    <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
+                    <?php include('../web/map/app.php'); ?>
+
+                </div>
+
                 <div class="container-fluid p-0">
                     <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
                     </iframe>-->
@@ -148,17 +160,8 @@ session_start();
                     </div>
                 </div>
 
-                <br>
-                <br>
 
-                <div class="col-md-14">
 
-                    <h2 class="h2s">Direcciónes de los bicicleteros</h2>
-
-                    <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
-                    <?php include('../web/map/app.php'); ?>
-
-                </div>
             </div>
         </div> <!-- End maps -->
     </main> <!-- End #main -->

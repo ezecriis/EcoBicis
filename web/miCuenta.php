@@ -69,7 +69,7 @@ echo session_status();
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
                 echo "<li><a href='historialAdmin.php'>Usuarios</a></li>";
-                echo "<li><a href='reserva.php'>Bicicletas</a></li>"; // Add a href new file
+                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
@@ -80,6 +80,7 @@ echo session_status();
                 echo "<ul>";
                 echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='reserva.php'>Reserva</a></li>";
+                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historial.php'>Historial</a></li>";
                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
