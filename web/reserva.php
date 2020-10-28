@@ -76,45 +76,45 @@ session_start();
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php
 
-          if (!empty($_SESSION['id_rol'])) {
+                    if (!empty($_SESSION['id_rol'])) {
 
-            $rol = $_SESSION['id_rol'];
+                        $rol = $_SESSION['id_rol'];
 
 
-            switch ($rol) {
-              case 1:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>"; // Add a href new file
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='entrega.php'>Entrega</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-              case 2:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
-                echo "<li><a href='reserva.php'>Reserva</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='historial.php'>Historial</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-            }
-          } else {
-            echo "<li class='drop-down'><a href='#'>Login</a>";
-            echo "<ul>";
-            echo "<li><a href='web/registro.php'>Registrarse</a></li>";
-            echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
-            echo "</ul>";
-            echo "</li>";
-          }
+                        switch ($rol) {
+                            case 1:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>"; // Add a href new file
+                                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                echo "<li><a href='entrega.php'>Entrega</a></li>";
+                                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                            case 2:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
+                                echo "<li><a href='reserva.php'>Reserva</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='historial.php'>Historial</a></li>";
+                                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                        }
+                    } else {
+                        echo "<li class='drop-down'><a href='#'>Login</a>";
+                        echo "<ul>";
+                        echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    }
 
-          ?>
+                    ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -144,50 +144,99 @@ session_start();
                     <div class="row">
                         <div class="booking-form">
                             <br />
-                            <br />
-                            <br />
-                            <form action="reservaSend.php" class="col-12 p-4 border border-warning" action="../web/reserva2.php" method="post">
+                            <form action="" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
                                 <div class="form-group">
-                                    <span class="login-leters">Lugar</span>
-                                    <input class="form-control" name="origen" type="text" placeholder="Escriba donde esta">
-                                </div>
-                                <div class="form-group">
-                                    <span class="login-leters">Destino</span>
-                                    <input class="form-control" name="destino" type="text" placeholder="Escriba a donde va">
-                                </div>
-                                <div class="form-btn">
-                                    <button class="submit-btn">A pedalear!</button>
+                                    <div class="col-auto my-1">
+                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Salida</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="origen">
+                                            <option selected>Seleccione su estacion...</option>
+                                            <option value="1">Moreno</option>
+                                            <option value="2">Paso del Rey</option>
+                                            <option value="3">Padua</option>
+                                            <option value="4">Merlo</option>
+                                            <option value="5">Ituzaingo</option>
+                                            <option value="6">Castelar</option>
+                                            <option value="7">Moron</option>
+                                            <option value="8">Haedo</option>
+                                            <option value="9">Ramos Mejia</option>
+                                            <option value="10">Ciudadela</option>
+                                            <option value="11">Liniers</option>
+                                            <option value="12">Floresta</option>
+                                            <option value="13">Flores</option>
+                                            <option value="14">Caballito</option>
+                                            <option value="15">One</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </form>
-                            <br />
-                            <br />
+
+                            <form action="" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
+                                <div class="form-group">
+                                    <div class="col-auto my-1">
+                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Llegada</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destino">
+                                            <option selected>Seleccione su estacion...</option>
+                                            <option value="1">Moreno</option>
+                                            <option value="2">Paso del Rey</option>
+                                            <option value="3">Padua</option>
+                                            <option value="4">Merlo</option>
+                                            <option value="5">Ituzaingo</option>
+                                            <option value="6">Castelar</option>
+                                            <option value="7">Moron</option>
+                                            <option value="8">Haedo</option>
+                                            <option value="9">Ramos Mejia</option>
+                                            <option value="10">Ciudadela</option>
+                                            <option value="11">Liniers</option>
+                                            <option value="12">Floresta</option>
+                                            <option value="13">Flores</option>
+                                            <option value="14">Caballito</option>
+                                            <option value="15">One</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="section-center">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="booking-form">
+                                                <br />
+                                                <form action="reservaSend.php" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
+                                                    <div class="form-btn">
+                                                        <button class="submit-btn">A pedalear !</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <br />
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- ======= Maps ======= -->
-            <div class="map mt-2">
-                <div class="container-fluid p-0">
-                    <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+        <!-- ======= Maps ======= -->
+        <div class="map mt-2">
+            <div class="container-fluid p-0">
+                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
                     </iframe>-->
-                    <div class="col-md-14">
-                        <div id="mapa"></div>
-                    </div>
-                </div>
-                
-                <br>
-                <br>
-
                 <div class="col-md-14">
-
-                    <h2 class="h2s">Direcciónes de los bicicleteros</h2>
-
-                    <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
-                    <?php include('../web/map/app.php'); ?>
-
+                    <div id="mapa"></div>
                 </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="col-md-14">
+
+                <h2 class="h2s">Direcciónes de los bicicleteros</h2>
+
+                <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
+                <?php include('../web/map/app.php'); ?>
+
             </div>
         </div> <!-- End maps -->
     </main> <!-- End #main -->
