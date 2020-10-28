@@ -12,7 +12,7 @@ try {
     echo $ex->getLine();
 }
 
-$query = "UPDATE usuarios SET estado =0 WHERE id_usuario=$id";
+$query = "UPDATE usuarios SET estado =1 WHERE id_usuario=$id";
 $con = $conexion->prepare($query);
 $con->execute();
 
