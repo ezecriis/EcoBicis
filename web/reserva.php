@@ -144,70 +144,58 @@ session_start();
                     <div class="row">
                         <div class="booking-form">
                             <br />
-                            <form action="" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
+                            <form class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
                                 <div class="form-group">
                                     <div class="col-auto my-1">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Salida</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="origen">
                                             <option selected>Seleccione su estacion...</option>
-                                            <option value="1">Moreno</option>
-                                            <option value="2">Paso del Rey</option>
-                                            <option value="3">Padua</option>
-                                            <option value="4">Merlo</option>
-                                            <option value="5">Ituzaingo</option>
-                                            <option value="6">Castelar</option>
-                                            <option value="7">Moron</option>
-                                            <option value="8">Haedo</option>
-                                            <option value="9">Ramos Mejia</option>
-                                            <option value="10">Ciudadela</option>
-                                            <option value="11">Liniers</option>
-                                            <option value="12">Floresta</option>
-                                            <option value="13">Flores</option>
-                                            <option value="14">Caballito</option>
-                                            <option value="15">One</option>
+                                            <option value="Moreno">Moreno</option>
+                                            <option value="Paso del Rey">Paso del Rey</option>
+                                            <option value="Padua">Padua</option>
+                                            <option value="Merlo">Merlo</option>
+                                            <option value="Ituzaingo">Ituzaingo</option>
+                                            <option value="Castelar">Castelar</option>
+                                            <option value="Moron">Moron</option>
+                                            <option value="Haedo">Haedo</option>
+                                            <option value="Ramos Mejia">Ramos Mejia</option>
+                                            <option value="Ciudadela">Ciudadela</option>
+                                            <option value="Liniers">Liniers</option>
+                                            <option value="Floresta">Floresta</option>
+                                            <option value="Flores">Flores</option>
+                                            <option value="Caballito">Caballito</option>
+                                            <option value="One">One</option>
                                         </select>
                                     </div>
                                 </div>
-                            </form>
 
-                            <form action="" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
                                 <div class="form-group">
                                     <div class="col-auto my-1">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Llegada</label>
                                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destino">
                                             <option selected>Seleccione su estacion...</option>
-                                            <option value="1">Moreno</option>
-                                            <option value="2">Paso del Rey</option>
-                                            <option value="3">Padua</option>
-                                            <option value="4">Merlo</option>
-                                            <option value="5">Ituzaingo</option>
-                                            <option value="6">Castelar</option>
-                                            <option value="7">Moron</option>
-                                            <option value="8">Haedo</option>
-                                            <option value="9">Ramos Mejia</option>
-                                            <option value="10">Ciudadela</option>
-                                            <option value="11">Liniers</option>
-                                            <option value="12">Floresta</option>
-                                            <option value="13">Flores</option>
-                                            <option value="14">Caballito</option>
-                                            <option value="15">One</option>
+                                            <option value="Moreno">Moreno</option>
+                                            <option value="Paso del Rey">Paso del Rey</option>
+                                            <option value="Padua">Padua</option>
+                                            <option value="Merlo">Merlo</option>
+                                            <option value="Ituzaingo">Ituzaingo</option>
+                                            <option value="Castelar">Castelar</option>
+                                            <option value="Moron">Moron</option>
+                                            <option value="Haedo">Haedo</option>
+                                            <option value="Ramos Mejia">Ramos Mejia</option>
+                                            <option value="Ciudadela">Ciudadela</option>
+                                            <option value="Liniers">Liniers</option>
+                                            <option value="Floresta">Floresta</option>
+                                            <option value="Flores">Flores</option>
+                                            <option value="Caballito">Caballito</option>
+                                            <option value="One">One</option>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="section-center">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="booking-form">
-                                                <br />
-                                                <form action="reservaSend.php" class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
-                                                    <div class="form-btn">
-                                                        <button class="submit-btn">A pedalear !</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                    <br />
+                                    <div class="form-btn">
+                                        <button class="submit-btn">A pedalear !</button>
                                     </div>
+
                                 </div>
                             </form>
                             <br />

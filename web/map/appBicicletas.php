@@ -14,7 +14,7 @@
             <tr>
               <th scope='col'>Localidad</th>
               <th scope='col'>Dirección</th>
-              <th scope='col'>Stock</th>
+              <th scope='col'>Stock total</th>
               <th scope='col'>Disponibles</th>
             </tr>
             </thead>
