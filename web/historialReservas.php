@@ -71,7 +71,7 @@ session_set_cookie_params(60); // 1ms de inactividad
                 <ul>
                     <li class="active"><a href="../index.php">Inicio</a></li>
                     <li><a href="../about.php">Sobre nosotros</a></li>
-                    <li><a href="../servicio.php">Services</a></li>
+                    <!-- <li><a href="../servicio.php">Services</a></li> -->
                     <li><a href="../portfolio.php">Portfolio</a></li>
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php

@@ -9,7 +9,7 @@ if (!empty($_SESSION['id_rol'])) {
     case 1:
       echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
       echo "<ul>";
-      echo "<li><a href='../web/historialAdmin.php'>Usuarios</a></li>";
+      echo "<li><a href='../web/hisotorialUsuarios.php'>Usuarios</a></li>";
       echo "<li><a href='..web/bicicletas.php'>Bicicletas</a></li>";
       echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
       echo "<li><a href='logout.php'>Cerrar sesion</a></li>";

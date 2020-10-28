@@ -60,7 +60,7 @@
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='historialAdmin.php'>Usuarios</a></li>";
+                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
