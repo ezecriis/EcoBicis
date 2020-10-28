@@ -85,6 +85,7 @@ session_set_cookie_params(60); // 1ms de inactividad
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
+                echo "<li><a href='editUsu.php'>Admin</a></li>";
                 echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";

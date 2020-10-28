@@ -54,7 +54,7 @@ session_start();
                 <ul>
                     <li class="active"><a href="../index.php">Inicio</a></li>
                     <li><a href="../about.php">Sobre nosotros</a></li>
-                    <li><a href="../services.php">Services</a></li>
+                    <!-- <li><a href="../services.php">Services</a></li> -->
                     <li><a href="../portfolio.php">Portfolio</a></li>
                     <li><a href="../contact.php">Contacto</a></li>
                      <?php
@@ -68,6 +68,7 @@ session_start();
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
+                echo "<li><a href='editUsu.php'>Admin</a></li>";
                 echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
