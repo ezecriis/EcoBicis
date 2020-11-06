@@ -51,44 +51,44 @@
                     <li><a href="../contact.php">Contacto</a></li>
                     <?php
 
-          if (!empty($_SESSION['id_rol'])) {
+                    if (!empty($_SESSION['id_rol'])) {
 
-            $rol = $_SESSION['id_rol'];
+                        $rol = $_SESSION['id_rol'];
 
 
-            switch ($rol) {
-              case 1:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-              case 2:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
-                echo "<li><a href='web/reserva.php'>Reserva</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='web/historial.php'>Historial</a></li>";
-                echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-            }
-          } else {
-            echo "<li class='drop-down'><a href='#'>Login</a>";
-            echo "<ul>";
-            echo "<li><a href='registro.php'>Registrarse</a></li>";
-            echo "<li><a href='login.php'>Iniciar sesion</a></li>";
-            echo "</ul>";
-            echo "</li>";
-          }
+                        switch ($rol) {
+                            case 1:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                            case 2:
+                                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                echo "<ul>";
+                                echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
+                                echo "<li><a href='web/reserva.php'>Reserva</a></li>";
+                                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='web/historial.php'>Historial</a></li>";
+                                echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                                break;
+                        }
+                    } else {
+                        echo "<li class='drop-down'><a href='#'>Login</a>";
+                        echo "<ul>";
+                        echo "<li><a href='registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='login.php'>Iniciar sesion</a></li>";
+                        echo "</ul>";
+                        echo "</li>";
+                    }
 
-          ?>
+                    ?>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -148,13 +148,22 @@
                                     <input class="form-control" type="number" name="telefono" id="telefono" maxlength="20" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Sexo:</label>
+                                    <label>Genero:</label>
                                 </div>
                                 <div class="form-group">
-                                    <label for="hombre">Hombre</label>
-                                    <input type="radio" name="sexo" id="hombre" value="Hombre" required>
-                                    <label for="mujer">Mujer</label>
-                                    <input type="radio" name="sexo" id="mujer" value="Mujer" required>
+                                    <?php
+                                    $conexion = mysqli_connect("localhost", "root", "");
+
+                                    mysqli_select_db($conexion, "ecobicis") or die("no se encuentra la base de datos");
+
+                                    echo '<select class="form-control" id="genero" name="genero" required>';
+                                    $query = "SELECT * FROM genero";
+                                    $resultado = mysqli_query($conexion, $query);
+                                    while (($row = mysqli_fetch_array($resultado)) == true) {
+                                        echo '<OPTION VALUE="' . $row['id_genero'] . '">' . $row['genero'] . '</OPTION>';
+                                    }
+                                    ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>CUIL:</label>
@@ -174,8 +183,7 @@
                             <?php
                             if (isset($_GET['error']) == 7) {
                                 echo "<div class='alert alert-danger' role='alert'>Imposible registrarce, CORREO O CUIL YA EXISTENTES.</div>";
-                            }
-                            else {
+                            } else {
                                 include("correo.php");
                             }
                             ?>

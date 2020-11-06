@@ -18,7 +18,7 @@ $apellido = $_POST['apellido'];
 $salt = md5($_POST['pass']);
 $password = crypt($_POST['pass'], $salt);
 $email = $_POST['email'];
-$sexo = $_POST['sexo'];
+$genero = $_POST['genero'];
 $telefono = $_POST['telefono'];
 
 // $pass_provisoria = rand(0000, 9999);
@@ -56,22 +56,20 @@ try {
 
         //Recipients
         $mail->setFrom('cr.ezequiel24@gmail.com');
-        $mail->addAddress($email);                       // Add a recipient
+        $mail->addAddress($email); // Add a recipient
 
         // Content
-        $mail->isHTML(true);                             // Set email format to HTML
+        $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'SE HA REGISTRADO CON EXITO! BIENVENIDO A ECOBICIS';
-        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Sexo: ' . $sexo . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $pass . '<br>' . '<br>' . '</b>';
-        $mail->CharSet = 'UTF-8';                          // Charset of characters.
-        $mail->send();                                   // Send mail.
+        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $password . '<br>' . '<br>' . '</b>';
+        $mail->CharSet = 'UTF-8'; // Charset of characters.
+        $mail->send(); // Send mail.
 
-        $sql = "INSERT INTO usuarios (nombre, apellido, password, cuil, email, sexo, telefono) VALUES ('$nombre', '$apellido', '$password' , '$cuil', '$email', '$sexo', '$telefono')";
+        $sql = "INSERT INTO usuarios (cuil, nombre, apellido, password, email, fk_genero, telefono, id_rol, estado) VALUES ('$cuil', '$nombre', '$apellido', '$password', '$email', '$genero', '$telefono', '1', '1')";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         header("location:../index.php?Var=8");
     }
-
-    // $sql = "INSERT INTO usuarios (nombre, apellido, password, cuil, email, sexo, telefono) VALUES ('$nombre', '$apellido', '$password' , '$cuil', '$email', '$sexo', '$telefono')";
 
 } catch (Exception $ex) {
     echo $ex->getMessage();
