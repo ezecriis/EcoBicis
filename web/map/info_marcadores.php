@@ -6,7 +6,7 @@
     
     while($row = $result->fetch_assoc()){ ?>
     
-    ['<div class="info_content">' + '<h3><?php echo $row['nombre']; ?></h3>' + '<p><?php echo $row['direccion']; ?></p>' + '</div>'], 
+    ['<div class="info_content">' + '<h3><?php echo $row['estacion']; ?></h3>' + '<p><?php echo $row['direccion']; ?></p>' + '</div>'], 
 
     <?php }
   }
