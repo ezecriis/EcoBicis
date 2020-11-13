@@ -1,6 +1,6 @@
 <?php
 
-$id = $_GET['id'];
+$cuil = $_GET['cuil'];
 
 
 try {
@@ -12,7 +12,7 @@ try {
     echo $ex->getLine();
 }
 
-$query = "UPDATE usuarios SET estado =1 WHERE id_usuario=$id";
+$query = "UPDATE usuarios SET estado =1 WHERE cuil=$cuil";
 $con = $conexion->prepare($query);
 $con->execute();
 

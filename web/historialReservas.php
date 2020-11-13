@@ -145,13 +145,13 @@ session_set_cookie_params(60); // 1ms de inactividad
         <table id="data_table" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Usuario</th>
+                    <th>CUIL</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>CUIL</th>
                     <th>Correo</th>
                     <th>Telefono</th>
-                    <th>Sexo</th>
+                    <th>Genero</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -163,37 +163,20 @@ session_set_cookie_params(60); // 1ms de inactividad
                     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $conexion->exec("SET CHARACTER SET UTF8");
 
-                    $sql = "SELECT * FROM reservas as r inner join usuarios as u on r.cuil = u.cuil";
+                    $sql = "SELECT * FROM reservas inner join usuarios inner join genero on reservas.fk_cuil = usuarios.cuil && genero.id_genero = usuarios.fk_genero";
                     $consulta = $conexion->prepare($sql);
                     $consulta->execute();
 
-                    /*echo "<table class = 'table table-striped'>";
-                    echo "<tr>";
-                    echo "<td><strong>USUARIO</strong></td>";
-                    echo "<td><strong>NOMBRE</strong></td>";
-                    echo "<td><strong>APELLIDO</strong></td>";
-                    echo "<td><strong>CUIL</strong></td>";
-                    echo "<td><strong>CORREO</strong></td>";
-                    echo "<td><strong>TELEFONO</strong></td>";
-                    echo "<td><strong>SEXO</strong></td>";
-                    echo "<td><strong>ACCION</strong></td>";
-                    echo "<td>";
-                    echo "<td>";
-                    echo "</td>";
-                    echo "<td>";
-                    echo "</td>";
-                    echo "</td>";
-                    echo "</tr>";*/
                     while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
                         echo "<tr>";
-                        echo "<td>" . $fila['id_usuario'] . "</td>";
+                        echo "<td>" . $fila['cuil'] . "</td>";
                         echo "<td>" . $fila['nombre'] . "</td>";
                         echo "<td>" . $fila['apellido'] . "</td>";
-                        echo "<td>" . $fila['cuil'] . "</td>";
                         echo "<td>" . $fila['email'] . "</td>";
                         echo "<td>" . $fila['telefono'] . "</td>";
-                        echo "<td>" . $fila['sexo'] . "</td>";
+                        echo "<td>" . $fila['genero'] . "</td>";
+                        echo "<td>" . $fila['fecha'] . "</td>";
                         echo "</tr>";
                     }
 

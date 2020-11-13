@@ -144,13 +144,14 @@ session_set_cookie_params(60); // 1ms de inactividad
         <table id="data_table" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Usuario</th>
+                    <th>CUIL</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>CUIL</th>
                     <th>Correo</th>
                     <th>Telefono</th>
-                    <th>Sexo</th>
+                    <th>Genero</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -162,42 +163,29 @@ session_set_cookie_params(60); // 1ms de inactividad
                     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $conexion->exec("SET CHARACTER SET UTF8");
 
-                    $sql = "SELECT * FROM usuarios where id_rol = 2";
+                    $sql = "SELECT usuarios.cuil, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono, usuarios.estado, genero.genero, roles.rol FROM usuarios INNER JOIN genero INNER JOIN roles ON usuarios.fk_genero = genero.id_genero && usuarios.id_rol = roles.id_rol";
                     $consulta = $conexion->prepare($sql);
                     $consulta->execute();
 
-                    /*echo "<table class = 'table table-striped'>";
-                    echo "<tr>";
-                    echo "<td><strong>USUARIO</strong></td>";
-                    echo "<td><strong>NOMBRE</strong></td>";
-                    echo "<td><strong>APELLIDO</strong></td>";
-                    echo "<td><strong>CUIL</strong></td>";
-                    echo "<td><strong>CORREO</strong></td>";
-                    echo "<td><strong>TELEFONO</strong></td>";
-                    echo "<td><strong>SEXO</strong></td>";
-                    echo "<td><strong>ACCION</strong></td>";
-                    echo "<td>";
-                    echo "<td>";
-                    echo "</td>";
-                    echo "<td>";
-                    echo "</td>";
-                    echo "</td>";
-                    echo "</tr>";*/
+                    
                     while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
                         echo "<tr>";
-                        echo "<td>" . $fila['id_usuario'] . "</td>";
+                        echo "<td>" . $fila['cuil'] . "</td>";
                         echo "<td>" . $fila['nombre'] . "</td>";
                         echo "<td>" . $fila['apellido'] . "</td>";
-                        echo "<td>" . $fila['cuil'] . "</td>";
                         echo "<td>" . $fila['email'] . "</td>";
                         echo "<td>" . $fila['telefono'] . "</td>";
-                        echo "<td>" . $fila['sexo'] . "</td>";
-                        echo "<td>" . $fila['estado'] . "</td>";
-                        if ($fila['estado'] == true) {
-                            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='removerUsuario.php?id=" . $fila['id_usuario'] . "'>Remover</a></button></td>";
-                        } else {
-                            echo "<td><button type='button' class='btn btn-green btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='altaUsuario.php?id=" . $fila['id_usuario'] . "'>Dar de alta</a></button></td>";
+                        echo "<td>" . $fila['genero'] . "</td>";
+                        echo "<td>" . $fila['rol'] . "</td>";
+                        if ($fila['estado'] == 1) 
+                        {
+                            echo "<td>Activo</td>";
+                            echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='removerUsuario.php?cuil=" . $fila['cuil'] . "'>Remover</a></button></td>";
+                        }
+                        else {
+                            echo "<td>Inactivo</td>";
+                            echo "<td><button type='button' class='btn btn-green btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='altaUsuario.php?cuil=" . $fila['cuil'] . "'>Dar de alta</a></button></td>";
                         }
                         echo "</tr>";
                     }

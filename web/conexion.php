@@ -31,12 +31,12 @@ $pass_descifrada = $r['password'];
     if (hash_equals($pass_descifrada, $pass)) {
         session_start();
         session_set_cookie_params(60); // 1ms de inactividad
+        $_SESSION['cuil'] = $r['cuil'];
         $_SESSION['nombre'] = $r['nombre'];
         $_SESSION['apellido'] = $r['apellido'];
-        $_SESSION['cuil'] = $r['cuil'];
         $_SESSION['id_rol'] = $r['id_rol'];
         $_SESSION['email'] = $r['email'];
-        $_SESSION['sexo'] = $r['sexo'];
+        $_SESSION['genero'] = $r['fk_genero'];
         $_SESSION['telefono'] = $r['telefono'];
         //$_SESSION['rol'] = $r['rol'];
         header("location:../index.php");
