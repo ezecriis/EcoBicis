@@ -41,36 +41,42 @@ if ($row_cnt == 0) {
     $stock = $r['disponibles'];
     $stock = $stock - 1;
     $mysqli->query("UPDATE bicicletero set disponibles='$stock' where fk_estacion='$origen'");
-
-    $query = "UPDATE usuarios SET estado =1 WHERE cuil=$cuil";
-    $con = $conexion->prepare($query);
-    $con->execute();
     
-    // Instantiation and passing `true` enables exceptions
-    $mail = new PHPMailer(true);
-
     $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->exec("SET CHARACTER SET UTF8");
+
+    $queryOrigen = "SELECT estacion from estaciones WHERE id_estacion = $origen";
+    $conOrigen = $conexion->prepare($queryOrigen);
+    $conOrigen->execute();
+    $OrigenInicio = $conOrigen->fetch(PDO::FETCH_ASSOC);
+
+    $queryDestino = "SELECT estacion from estaciones WHERE id_estacion = $destino";
+    $conDestino = $conexion->prepare($queryDestino);
+    $conDestino->execute();
+    $DestinoFinal = $conDestino->fetch(PDO::FETCH_ASSOC);
+    
+    // Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
 
     //Server settings
     $mail->SMTPDebug = 0;                            // Enable verbose debug output
     $mail->isSMTP();                                 // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';            // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                        // Enable SMTP authentication
-    $mail->Username   = 'cr.ezequiel24@gmail.com';      // SMTP username
-    $mail->Password   = 'sesion300693';               // SMTP password
+    $mail->Username   = 'westecobicis@gmail.com';      // SMTP username
+    $mail->Password   = '12Cristian34';               // SMTP password
     $mail->SMTPSecure = 'tls';                       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('cr.ezequiel24@gmail.com');
+    $mail->setFrom('westecobicis@gmail.com');
     $mail->addAddress($email);                       // Add a recipient
 
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $origen . '<br>' . 'Y viajara a : ' . $destino . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
     $mail->send();                                   // Send mail.
 
@@ -104,13 +110,13 @@ if ($row_cnt == 0) {
     $mail->isSMTP();                                 // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';            // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                        // Enable SMTP authentication
-    $mail->Username   = 'cr.ezequiel24@gmail.com';      // SMTP username
-    $mail->Password   = 'sesion300693';               // SMTP password
+    $mail->Username   = 'westecobicis@gmail.com';      // SMTP username
+    $mail->Password   = '12Cristian34';               // SMTP password
     $mail->SMTPSecure = 'tls';                       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('cr.ezequiel24@gmail.com');
+    $mail->setFrom('westecobicis@gmail.com');
     $mail->addAddress($email);                       // Add a recipient
 
     // Content
