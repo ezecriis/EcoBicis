@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-session_set_cookie_params(60); // 1ms de inactividad
-//if (empty($_SESSION['nombre'])) {
-//    echo "INICIA SESION";
-//}
-// echo session_status();
+$cuil = $_SESSION['cuil'];
 ?>
 <html lang="es">
 
@@ -99,6 +95,7 @@ session_set_cookie_params(60); // 1ms de inactividad
                                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
                                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                                 echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
                                 echo "</ul>";
@@ -144,19 +141,15 @@ session_set_cookie_params(60); // 1ms de inactividad
         <table id="data_table" class="table table-striped">
             <thead>
                 <tr>
-                    <th>CUIL</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
-                    <th>Genero</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Entrega</th>
                 </tr>
             </thead>
             <tbody>
 
-                <?php
+            <?php
                 try {
 
                     $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");

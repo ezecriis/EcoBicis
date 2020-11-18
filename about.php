@@ -88,6 +88,7 @@ session_start();
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";

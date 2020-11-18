@@ -99,6 +99,7 @@ session_start();
                                 echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
                                 echo "<li><a href='reserva.php'>Reserva</a></li>";
                                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
                                 echo "<li><a href='historial.php'>Historial</a></li>";
                                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                                 echo "</ul>";
@@ -148,47 +149,39 @@ session_start();
                                 <div class="form-group">
                                     <div class="col-auto my-1">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Salida</label>
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="origen">
-                                            <option selected>Seleccione su estacion...</option>
-                                            <option value="Moreno">Moreno</option>
-                                            <option value="Paso del Rey">Paso del Rey</option>
-                                            <option value="Padua">Padua</option>
-                                            <option value="Merlo">Merlo</option>
-                                            <option value="Ituzaingo">Ituzaingo</option>
-                                            <option value="Castelar">Castelar</option>
-                                            <option value="Moron">Moron</option>
-                                            <option value="Haedo">Haedo</option>
-                                            <option value="Ramos Mejia">Ramos Mejia</option>
-                                            <option value="Ciudadela">Ciudadela</option>
-                                            <option value="Liniers">Liniers</option>
-                                            <option value="Floresta">Floresta</option>
-                                            <option value="Flores">Flores</option>
-                                            <option value="Caballito">Caballito</option>
-                                            <option value="One">One</option>
+                                        
+                                        <?php
+                                            $conexion = mysqli_connect("localhost", "root", "");
+
+                                            mysqli_select_db($conexion, "ecobicis") or die("no se encuentra la base de datos");
+
+                                            echo '<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="origen">';
+                                            $query = "SELECT * FROM estaciones";
+                                            $resultado = mysqli_query($conexion, $query);
+                                            while (($row = mysqli_fetch_array($resultado)) == true) {
+                                                echo '<OPTION VALUE="' . $row['id_estacion'] . '">' . $row['estacion'] . '</OPTION>';
+                                            }
+                                        ?>
                                         </select>
+                                        
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-auto my-1">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">Llegada</label>
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destino">
-                                            <option selected>Seleccione su estacion...</option>
-                                            <option value="Moreno">Moreno</option>
-                                            <option value="Paso del Rey">Paso del Rey</option>
-                                            <option value="Padua">Padua</option>
-                                            <option value="Merlo">Merlo</option>
-                                            <option value="Ituzaingo">Ituzaingo</option>
-                                            <option value="Castelar">Castelar</option>
-                                            <option value="Moron">Moron</option>
-                                            <option value="Haedo">Haedo</option>
-                                            <option value="Ramos Mejia">Ramos Mejia</option>
-                                            <option value="Ciudadela">Ciudadela</option>
-                                            <option value="Liniers">Liniers</option>
-                                            <option value="Floresta">Floresta</option>
-                                            <option value="Flores">Flores</option>
-                                            <option value="Caballito">Caballito</option>
-                                            <option value="One">One</option>
+                                        <?php
+                                            $conexion = mysqli_connect("localhost", "root", "");
+
+                                            mysqli_select_db($conexion, "ecobicis") or die("no se encuentra la base de datos");
+
+                                            echo '<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destino">';
+                                            $query = "SELECT * FROM estaciones";
+                                            $resultado = mysqli_query($conexion, $query);
+                                            while (($row = mysqli_fetch_array($resultado)) == true) {
+                                                echo '<OPTION VALUE="' . $row['id_estacion'] . '">' . $row['estacion'] . '</OPTION>';
+                                            }
+                                        ?>
                                         </select>
                                     </div>
                                     <br />
@@ -220,7 +213,7 @@ session_start();
 
             <div class="col-md-14">
 
-                <h2 class="h2s">Direcciónes de los bicicleteros</h2>
+                <h2 class="h2s">Estaciones de los bicicleteros</h2>
 
                 <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
                 <?php include('../web/map/app.php'); ?>
@@ -321,7 +314,7 @@ session_start();
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcFjePSQivTobOPqBW_vRSveSgxpIUgcI&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuxHE_mOiVkD4NMDZG9e6p-QQiARidcQo&callback=initMap" async defer></script>
 
 
     <script type="text/javascript">

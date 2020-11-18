@@ -1,37 +1,130 @@
 <?php
 session_start();
 $cuil = $_SESSION['cuil'];
+$nombre = $_SESSION['nombre'];
+$apellido = $_SESSION['apellido'];
+$email = $_SESSION['email'];
+$telefono = $_SESSION['telefono'];
 $origen = $_POST['origen'];
 $destino = $_POST['destino'];
 $fecha = date('d-m-y');
 
-//$pass_provisoria = rand(0000, 9999);
+/* This is for send a direct message of form Contact.php */
 
-try {
+use  PHPMailer \ PHPMailer \ PHPMailer;
+use  PHPMailer \ PHPMailer \ Exception;
+
+/* Files required */
+
+require '../src/Exception.php';
+require '../src/PHPMailer.php';
+require '../src/SMTP.php';
+
+$mysqli = new mysqli("localhost", "root", "", "ecobicis");
+
+/* verificar la conexión */
+if (mysqli_connect_errno()) {
+    printf("Conexión fallida: %s\n", mysqli_connect_error());
+    exit();
+}
+
+$result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
+
+/* determinar el número de filas del resultado */
+$row_cnt = $result->num_rows;
+
+if ($row_cnt == 0) {
+    
+    $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0)");
+    $result2 = $mysqli->query("SELECT disponibles FROM bicicletero WHERE fk_estacion = $origen && estado = 1");
+    $r = $result2->fetch_assoc();
+    $stock = $r['disponibles'];
+    $stock = $stock - 1;
+    $mysqli->query("UPDATE bicicletero set disponibles='$stock' where fk_estacion='$origen'");
+
+    $query = "UPDATE usuarios SET estado =1 WHERE cuil=$cuil";
+    $con = $conexion->prepare($query);
+    $con->execute();
+    
+    // Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
     $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->exec("SET CHARACTER SET UTF8");
 
-    $sql = "INSERT INTO reservas (cuil, origen, destino, fecha) VALUES ('$cuil', '$origen', '$destino', '$fecha')";
+    //Server settings
+    $mail->SMTPDebug = 0;                            // Enable verbose debug output
+    $mail->isSMTP();                                 // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';            // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                        // Enable SMTP authentication
+    $mail->Username   = 'cr.ezequiel24@gmail.com';      // SMTP username
+    $mail->Password   = 'sesion300693';               // SMTP password
+    $mail->SMTPSecure = 'tls';                       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-    $consulta = $conexion->prepare($sql);
-    $consulta->execute();
+    //Recipients
+    $mail->setFrom('cr.ezequiel24@gmail.com');
+    $mail->addAddress($email);                       // Add a recipient
 
-
-    $sql2 = "select disponibles from bicicletero where nombre='$origen'";
-    $consulta2 = $conexion->prepare($sql2);
-    $consulta2->execute();
-    $r = $consulta2->fetch(PDO::FETCH_ASSOC);
-    $stock = $r['disponibles'];
-    $stock = $stock - 1;
-
-    $sql3 = "update bicicletero set disponibles='$stock' where nombre='$origen'";
-    $consulta3 = $conexion->prepare($sql3);
-    $consulta3->execute();
+    // Content
+    $mail->isHTML(true);                             // Set email format to HTML
+    $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
+    $mail->Body    = 'Usted esta en : ' . $origen . '<br>' . 'Y viajara a : ' . $destino . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
+    $mail->CharSet = 'UTF-8';                          // Charset of characters.
+    $mail->send();                                   // Send mail.
 
     
     header("location:../index.php?Var=8");
-} catch (Exception $ex) {
-    echo $ex->getMessage();
-    echo $ex->getLine();
+
+} else {
+
+    $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
+    $Entrega = $result->fetch_assoc();
+    
+    if ($Entrega['entrega'] == 0) {
+        header("location:entrega.php");
+    } else {
+        $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0)");
+        $result2 = $mysqli->query("SELECT disponibles FROM bicicletero WHERE fk_estacion = $origen && estado = 1");
+        $r = $result2->fetch_assoc();
+        $stock = $r['disponibles'];
+        $stock = $stock - 1;
+        $mysqli->query("UPDATE bicicletero set disponibles='$stock' where fk_estacion='$origen'");
+
+    // Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexion->exec("SET CHARACTER SET UTF8");
+
+    //Server settings
+    $mail->SMTPDebug = 0;                            // Enable verbose debug output
+    $mail->isSMTP();                                 // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';            // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                        // Enable SMTP authentication
+    $mail->Username   = 'cr.ezequiel24@gmail.com';      // SMTP username
+    $mail->Password   = 'sesion300693';               // SMTP password
+    $mail->SMTPSecure = 'tls';                       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+    //Recipients
+    $mail->setFrom('cr.ezequiel24@gmail.com');
+    $mail->addAddress($email);                       // Add a recipient
+
+    // Content
+    $mail->isHTML(true);                             // Set email format to HTML
+    $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
+    $mail->Body    = 'Usted esta en : ' . $origen . '<br>' . 'Y viajara a : ' . $destino . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
+    $mail->CharSet = 'UTF-8';                          // Charset of characters.
+    $mail->send();                                   // Send mail.
+
+    
+    header("location:../index.php?Var=8");
+    }
 }
+
+/* cerrar la conexión */
+$mysqli->close();
+?>

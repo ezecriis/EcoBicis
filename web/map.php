@@ -99,6 +99,7 @@ session_start();
                                 echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
                                 echo "<li><a href='reserva.php'>Reserva</a></li>";
                                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
                                 echo "<li><a href='historial.php'>Historial</a></li>";
                                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                                 echo "</ul>";

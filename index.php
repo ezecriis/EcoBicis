@@ -64,11 +64,45 @@ session_start();
           <li><a href="contact.php">Contacto</a></li>
           <?php
 
+          // if (!empty($_SESSION['id_rol'])) {
+
+          //   $rol = $_SESSION['id_rol'];
+          //   // rol 1 es Admin
+          //   if ($rol == 1 ) {
+          //       echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+          //       echo "<ul>";
+          //       echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+          //       echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+          //       echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+          //       echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+          //       echo "<li><a href='web/entrega.php'>Entrega</a></li>";
+          //       echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+          //       echo "</ul>";
+          //       echo "</li>";
+          //       // rol 2 es usuario     
+          //   } else if ( $rol == 2 ) {
+          //     echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+          //       echo "<ul>";
+          //       echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
+          //       echo "<li><a href='web/reserva.php'>Reserva</a></li>";
+          //       echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+          //       echo "<li><a href='web/historial.php'>Historial</a></li>";
+          //       echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+          //       echo "</ul>";
+          //       echo "</li>";
+          //   }
+          //   else {
+          //   echo "<li class='drop-down'><a href='#'>Login</a>";
+          //   echo "<ul>";
+          //   echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+          //   echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+          //   echo "</ul>";
+          //   echo "</li>";
+          //   }
+          // }
+
           if (!empty($_SESSION['id_rol'])) {
-
             $rol = $_SESSION['id_rol'];
-
-
             switch ($rol) {
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
@@ -77,7 +111,6 @@ session_start();
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='web/entrega.php'>Entrega</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
                 echo "</li>";
@@ -88,6 +121,7 @@ session_start();
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
@@ -102,7 +136,6 @@ session_start();
             echo "</ul>";
             echo "</li>";
           }
-
           ?>
         </ul>
       </nav><!-- .nav-menu -->
@@ -123,6 +156,9 @@ session_start();
           }
           if (isset($_GET['Var']) === 1) {
             echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!</div>";
+          }
+          if (isset($_GET['Var']) === 3) {
+            echo "<div class='alert alert-success' role='alert'>¡No se puede hacer la reserva !</div>";
           }
           ?>
           <h2 class="animated fadeInDown">Bienvenido a <span>Eco bicis</span></h2>

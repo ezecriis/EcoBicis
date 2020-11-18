@@ -73,6 +73,7 @@
                                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
                                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                                 echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
                                 echo "</ul>";

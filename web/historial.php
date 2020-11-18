@@ -81,6 +81,7 @@ echo session_status();
                 echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='reserva.php'>Reserva</a></li>";
                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
                 echo "<li><a href='historial.php'>Historial</a></li>";
                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
@@ -129,9 +130,14 @@ echo session_status();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexion->exec("SET CHARACTER SET UTF8");
 
-        $sql = "SELECT * FROM reservas where cuil = " . $_SESSION['cuil'] . "";
+        $sql = "SELECT reservas.fecha, reservas.id_reserva, reservas.entrega, estaciones.estacion from reservas INNER JOIN estaciones ON estaciones.id_estacion = fk_estacion_o && reservas.fk_cuil = fk_cuil";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
+
+        $sql2 = "SELECT estaciones.estacion from estaciones INNER JOIN reservas ON estaciones.id_estacion = fk_estacion_d && reservas.fk_cuil = fk_cuil";
+        $consulta2 = $conexion->prepare($sql2);
+        $consulta2->execute();
+        $fila2 = $consulta2->fetch(PDO::FETCH_ASSOC);
 
         echo "<table class = 'table table-striped'>";
         echo "<tr>";
@@ -150,8 +156,8 @@ echo session_status();
 
             echo "<tr>";
             echo "<td>" . $fila['fecha'] . "</td>";
-            echo "<td>" . $fila['origen'] . "</td>";
-            echo "<td>" . $fila['destino'] . "</td>";
+            echo "<td>" . $fila['estacion'] . "</td>";
+            echo "<td>" . $fila2['estacion'] . "</td>";
             echo "<td>" . $fila['id_reserva'] . "</td>";
             echo "</tr>";
         }

@@ -100,6 +100,7 @@ session_set_cookie_params(60); // 1ms de inactividad
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                 echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";

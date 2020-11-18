@@ -65,7 +65,7 @@ try {
         $mail->CharSet = 'UTF-8'; // Charset of characters.
         $mail->send(); // Send mail.
 
-        $sql = "INSERT INTO usuarios (cuil, nombre, apellido, password, email, fk_genero, telefono, id_rol, estado) VALUES ('$cuil', '$nombre', '$apellido', '$password', '$email', '$genero', '$telefono', '1', '1')";
+        $sql = "INSERT INTO usuarios (cuil, nombre, apellido, password, email, fk_genero, telefono, id_rol, estado) VALUES ('$cuil', '$nombre', '$apellido', '$password', '$email', '$genero', '$telefono', '2', '1')";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         header("location:../index.php?Var=8");

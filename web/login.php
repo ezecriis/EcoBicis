@@ -51,45 +51,7 @@
           <li><a href="../services.php">Services</a></li>
           <li><a href="../portfolio.php">Portfolio</a></li>
           <li><a href="../contact.php">Contacto</a></li>
-          <?php
-
-          if (!empty($_SESSION['id_rol'])) {
-
-            $rol = $_SESSION['id_rol'];
-
-
-            switch ($rol) {
-              case 1:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-              case 2:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
-                echo "<li><a href='reserva.php'>Reserva</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='historial.php'>Historial</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-            }
-          } else {
-            echo "<li class='drop-down'><a href='#'>Login</a>";
-            echo "<ul>";
-            echo "<li><a href='registro.php'>Registrarse</a></li>";
-            echo "<li><a href='login.php'>Iniciar sesion</a></li>";
-            echo "</ul>";
-            echo "</li>";
-          }
-
+          <?php include '../barraNav.php'
           ?>
         </ul>
       </nav><!-- .nav-menu -->
@@ -155,7 +117,7 @@
                 <div class="form-group">
                   <button class="btn btn-success btn-sm btn-block" type="submit" name="enviar" id="enviar">Ingresar</button>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <button class="btn btn-danger btn-sm btn-block" type="submit" name="enviar" id="enviar">Login with
                     Gmail</button>
                 </div>
@@ -165,10 +127,8 @@
                   <br />
                   <p>Al registrarse, está indicando que ha leído y está de acuerdo con los <a href="#" class="ps-hero__content__link">Terminos de uso</a> y <a href="#">Prolitica de privacidad</a>.
                   </p>
-                </div>
+                </div> -->
               </form>
-              <br>
-              <br>
               <?php
               if (isset($_GET['error']) == 1) {
                 echo "<div class='alert alert-danger' role='alert'>CUIL y/o Contraseña inválida.</div>";
