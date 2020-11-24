@@ -110,6 +110,7 @@ session_start();
                 echo "<li><a href='web/editUsu.php'>Admin</a></li>";
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
                 echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
@@ -150,17 +151,24 @@ session_start();
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
+
           <?php
-          if (isset($_GET['Var']) === 8) {
-            echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!</div>";
-          }
-          if (isset($_GET['Var']) === 1) {
-            echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!</div>";
-          }
-          if (isset($_GET['Var']) === 3) {
-            echo "<div class='alert alert-success' role='alert'>¡No se puede hacer la reserva !</div>";
+
+          if (isset($_GET['Var'])) {
+            switch ($_GET['Var']) {
+              case 8:
+                echo "<div class='alert alert-success' role='alert'>¡Registro con éxito!</div>";
+                break;
+              case 1:
+                echo "<div class='alert alert-success' role='alert'>¡Envio de recuperacion de contraseña con éxito!</div>";
+                break;
+              case 3:
+                echo "<div class='alert alert-success' role='alert'>¡No se puede hacer la reserva !</div>";
+                break;
+            }
           }
           ?>
+
           <h2 class="animated fadeInDown">Bienvenido a <span>Eco bicis</span></h2>
           <p class="animated fadeInUp">Sistema de bicicletas sustentabe.</p>
           <a href="" class="btn-get-started animated fadeInUp">Leer mas</a>

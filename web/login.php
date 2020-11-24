@@ -129,9 +129,22 @@
                   </p>
                 </div> -->
               </form>
+
               <?php
-              if (isset($_GET['error']) == 1) {
-                echo "<div class='alert alert-danger' role='alert'>CUIL y/o Contraseña inválida.</div>";
+
+              if (isset($_GET['Error'])) {
+                switch($Error = $_GET['Error'])
+                  {
+                  case 1:
+                  echo "<div class='alert alert-danger' role='alert'>Contraseña inválida.</div>";
+                  break;
+                  case 2:
+                    echo "<div class='alert alert-danger' role='alert'>USUARIO no registrado.</div>";
+                  break;
+                  case 4:
+                    echo "<div class='alert alert-danger' role='alert'>USUARIO dado de baja.</div>";
+                  break;
+                }
               }
               ?>
             </div>
