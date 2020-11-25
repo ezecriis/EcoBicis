@@ -59,7 +59,7 @@ try {
         $mail->send();                                   // Send mail.
 
         // agregar un alert de que entrego ecobici
-        header("location:../index.php?Var=8");
+        header("location:../index.php?Var=6");
     }
 
     $sql2 = "SELECT reservas.fk_cuil, reservas.fk_estacion_o, bicicletero.disponibles FROM reservas INNER JOIN bicicletero ON reservas.fk_cuil ='$cuil' && reservas.fk_estacion_o = bicicletero.fk_estacion && reservas.entrega = 0";

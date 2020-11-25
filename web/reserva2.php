@@ -73,12 +73,12 @@ if ($row_cnt == 0) {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es indidual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . 'GRACIAS POR ELEGIRNOS';                                   // Send mail.
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es individual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . '<br>' . 'GRACIAS POR ELEGIRNOS';                                   // Send mail.
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
-    $mail->send(); 
+    $mail->send();
 
     
-    header("location:../index.php?Var=8");
+    header("location:../index.php?Var=5");
 
 } else {
 
@@ -124,7 +124,7 @@ if ($row_cnt == 0) {
     $mail->send();                                   // Send mail.
 
     
-    header("location:../index.php?Var=8");
+    header("location:../index.php?Var=5");
     }
 }
 
