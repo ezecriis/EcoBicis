@@ -71,7 +71,7 @@ try {
     $origen = $r['fk_estacion_o'];
     $stock = $stock + 1;
     
-    $sql3 = "update bicicletero set disponibles='$stock' where fk_estacion='$origen'";
+    $sql3 = "UPDATE bicicletero set disponibles='$stock' where fk_estacion='$origen'";
     $consulta3 = $conexion->prepare($sql3);
     $consulta3->execute();
 

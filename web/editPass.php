@@ -150,10 +150,10 @@ session_start();
                 </div>
               </form>
                <?php
-                            if (isset($_GET['error']) == 1) {
-                                echo "<div class='alert alert-danger' role='alert'>Las contraseñas no son iguales.</div>";
-                            }
-                            ?>
+                if (isset($_GET['error']) == 1) {
+                echo "<div class='alert alert-danger' role='alert'>Las contraseñas no son iguales.</div>";
+                }
+              ?>
               <br>
               <br>
             </div>

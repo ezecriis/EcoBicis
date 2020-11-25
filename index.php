@@ -165,6 +165,9 @@ session_start();
               case 3:
                 echo "<div class='alert alert-success' role='alert'>¡No se puede hacer la reserva !</div>";
                 break;
+                case 4:
+                  echo "<div class='alert alert-success' role='alert'>Usted no tiene permiso para acceder a este sitio. </div>";
+                break;
             }
           }
           ?>

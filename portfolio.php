@@ -77,6 +77,7 @@ session_start();
                 echo "<li><a href='web/editUsu.php'>Admin</a></li>";
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicletero ABM</a></li>";
                 echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
                 echo "<li><a href='web/entrega.php'>Entrega</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";

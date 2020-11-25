@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start();
-//if (empty($_SESSION['nombre'])) {
-//    echo "INICIA SESION";
-//}
-?>
+if (empty($_SESSION['cuil'])) :
+
+    header("location:login.php?Error=5");
+else :
+    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) : ?>
+
 <html lang="en">
 
 <head>
@@ -87,7 +89,8 @@ session_start();
                 echo "<ul>";
                 echo "<li><a href='editUsu.php'>Admin</a></li>";
                 echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>"; // Add a href new file
+                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
                 echo "<li><a href='entrega.php'>Entrega</a></li>";
                 echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
@@ -327,3 +330,10 @@ session_start();
 </body>
 
 </html>
+
+<?php else :
+        header("location:../index.php?Var=4");
+    endif;
+endif;
+
+?>

@@ -144,6 +144,9 @@
                   case 4:
                     echo "<div class='alert alert-danger' role='alert'>USUARIO dado de baja.</div>";
                   break;
+                  case 5:
+                    echo "<div class='alert alert-danger' role='alert'>Debe estar logueado para acceder a este sitio.</div>";
+                  break;
                 }
               }
               ?>

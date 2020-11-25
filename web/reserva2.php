@@ -30,8 +30,19 @@ if (mysqli_connect_errno()) {
 
 $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
 
-/* determinar el número de filas del resultado */
-$row_cnt = $result->num_rows;
+  // nro random  
+  $d=mt_rand(1,30);
+  echo $d;
+  printf($d);
+
+    /* determinar el número de filas del resultado */
+    $row_cnt = $result->num_rows;
+
+    $queryOrigen = $mysqli->query("SELECT estacion from estaciones WHERE id_estacion = $origen");
+    $OrigenInicio = $queryOrigen->fetch_assoc();
+
+    $queryDestino = $mysqli->query("SELECT estacion from estaciones WHERE id_estacion = $destino");
+    $DestinoFinal = $queryDestino->fetch_assoc();
 
 if ($row_cnt == 0) {
     
@@ -41,20 +52,6 @@ if ($row_cnt == 0) {
     $stock = $r['disponibles'];
     $stock = $stock - 1;
     $mysqli->query("UPDATE bicicletero set disponibles='$stock' where fk_estacion='$origen'");
-    
-    $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
-    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conexion->exec("SET CHARACTER SET UTF8");
-
-    $queryOrigen = "SELECT estacion from estaciones WHERE id_estacion = $origen";
-    $conOrigen = $conexion->prepare($queryOrigen);
-    $conOrigen->execute();
-    $OrigenInicio = $conOrigen->fetch(PDO::FETCH_ASSOC);
-
-    $queryDestino = "SELECT estacion from estaciones WHERE id_estacion = $destino";
-    $conDestino = $conexion->prepare($queryDestino);
-    $conDestino->execute();
-    $DestinoFinal = $conDestino->fetch(PDO::FETCH_ASSOC);
     
     // Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
@@ -76,9 +73,9 @@ if ($row_cnt == 0) {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es indidual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . 'GRACIAS POR ELEGIRNOS';                                   // Send mail.
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
-    $mail->send();                                   // Send mail.
+    $mail->send(); 
 
     
     header("location:../index.php?Var=8");
@@ -122,7 +119,7 @@ if ($row_cnt == 0) {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $origen . '<br>' . 'Y viajara a : ' . $destino . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>';
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es individual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . ' GRACIAS POR ELEGIRNOS';
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
     $mail->send();                                   // Send mail.
 
