@@ -104,14 +104,15 @@
                   <label>Contraseña:</label>
                   <input class="form-control" type="password" name="pass" minlength="5" required>
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="dropdownCheck">
                   <label class="form-check-label" for="dropdownCheck">
                     Recordar
                   </label>
-                </div>
-                <div class="form-check-label">
-                  <a href="../web/passRecu.php" class="nav-link">¿Olvidaste la contraseña?</a>
+                </div> -->
+                <br />
+                <div class="center form-check-label">
+                  <a href="../web/passRecu.php" class="alert alert-success alert-link">¿Olvidaste la contraseña?</a>
                 </div>
                 <br />
                 <div class="form-group">

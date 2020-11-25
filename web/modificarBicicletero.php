@@ -178,15 +178,16 @@ else :
                                             <input class="form-control" type="number" name="stock" required value="<?php echo $filas['stock'] ?>">
                                         </div>
                                         <br>
-                                        <button>Modificar</button>
+                                        <button type="button" class="btn btn-secondary">Modificar</button>
+                                        <br>
                                         <br>
                                         <div class="form-group">
-                                            <label>Estado: </label>
+                                            <label class="btn btn-secondary">Estado: </label>
                                             <?php
                                             if ($filas['estado'] == 0) {
-                                                echo "<td><button type='button' class='btn btn-warning btn-rounded btn-sm my-0'><a href='altaEstacion.php?id=" . $filas['id'] . "'>Alta estacion</a></button></td>";
+                                                echo "<td><button type='button' class='btn btn-outline-primary'><a href='altaEstacion.php?id=" . $filas['id'] . "'>Alta estacion</a></button></td>";
                                             } else {
-                                                echo "<td><button type='button' class='btn btn-warning btn-rounded btn-sm my-0'><a href='bajaEstacion.php?id=" . $filas['id'] . "'>Baja estacion</a></button></td>";
+                                                echo "<td><button type='button' class='btn btn-outline-danger'><a href='bajaEstacion.php?id=" . $filas['id'] . "'>Baja estacion</a></button></td>";
                                             }
                                             ?>
 
