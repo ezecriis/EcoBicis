@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-// session_set_cookie_params(60); // 1ms de inactividad
-//if (empty($_SESSION['nombre'])) {
-//    echo "INICIA SESION";
-//}
+
 ?>
 <html lang="en">
 
@@ -21,9 +18,7 @@ session_start();
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,20 +61,18 @@ session_start();
           <?php
 
           if (!empty($_SESSION['id_rol'])) {
-
             $rol = $_SESSION['id_rol'];
-
-
             switch ($rol) {
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/editUsu.php'>Super admin</a></li>";
+                echo "<li><a href='web/creaAdmin.php'>Crear admin</a></li>";
+                echo "<li><a href='web/auditoria.php'>Auditoria</a></li>";
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='web/bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
                 echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='web/entrega.php'>Entrega</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
                 echo "</li>";
@@ -87,9 +80,22 @@ session_start();
               case 2:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
+                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 3:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
                 echo "<li><a href='web/reserva.php'>Reserva</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
                 echo "<li><a href='web/historial.php'>Historial</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
@@ -104,7 +110,6 @@ session_start();
             echo "</ul>";
             echo "</li>";
           }
-
           ?>
         </ul>
       </nav><!-- .nav-menu -->
@@ -150,10 +155,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-11.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-11.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Ciuedad">Ciuedad</a></h3>
-                <a href="assets/img/portfolio/porfolio-11.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Ciuedad"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-11.jpg" data-gall="portfolioGallery" class="venobox" title="Ciuedad">Ciuedad</a></h3>
+                <a href="assets/img/portfolio/porfolio-11.jpg" data-gall="portfolioGallery" class="venobox" title="Ciuedad"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -162,10 +165,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-22.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Bicis 3">Bicis 3</a></h3>
-                <a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Bicis 3"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 3">Bicis 3</a></h3>
+                <a href="assets/img/portfolio/porfolio-22.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 3"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -174,10 +175,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-33.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-33.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Pasisaje 1">Paisaje 1</a></h3>
-                <a href="assets/img/portfolio/porfolio-33.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Pasisaje 1"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-33.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 1">Paisaje 1</a></h3>
+                <a href="assets/img/portfolio/porfolio-33.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 1"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -186,10 +185,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-44.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-44.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Pasisaje 2">Pasisaje 2</a></h3>
-                <a href="assets/img/portfolio/porfolio-44.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Pasisaje 2"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-44.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 2">Pasisaje 2</a></h3>
+                <a href="assets/img/portfolio/porfolio-44.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 2"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -198,10 +195,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-55.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Bicis 2">Bicis 2</a></h3>
-                <a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Bicis 2"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 2">Bicis 2</a></h3>
+                <a href="assets/img/portfolio/porfolio-55.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 2"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -210,10 +205,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-66.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-66.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Pasisaje 3">Pasisaje 3</a></h3>
-                <a href="assets/img/portfolio/porfolio-66.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Pasisaje 3"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-66.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 3">Pasisaje 3</a></h3>
+                <a href="assets/img/portfolio/porfolio-66.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 3"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -222,10 +215,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-77.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-77.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Pasisaje 4">Pasisaje 4</a></h3>
-                <a href="assets/img/portfolio/porfolio-77.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Pasisaje 4"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-77.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 4">Pasisaje 4</a></h3>
+                <a href="assets/img/portfolio/porfolio-77.jpg" data-gall="portfolioGallery" class="venobox" title="Pasisaje 4"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -234,10 +225,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-88.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-88.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Paisaje 5">Paisaje 5</a></h3>
-                <a href="assets/img/portfolio/porfolio-88.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Paisaje 5"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-88.jpg" data-gall="portfolioGallery" class="venobox" title="Paisaje 5">Paisaje 5</a></h3>
+                <a href="assets/img/portfolio/porfolio-88.jpg" data-gall="portfolioGallery" class="venobox" title="Paisaje 5"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -246,10 +235,8 @@ session_start();
             <div class="portfolio-item">
               <img src="assets/img/portfolio/porfolio-99.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h3><a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox"
-                    title="Bicis 1">Bicis 1</a></h3>
-                <a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Bicis 1"><i class="icofont-plus"></i></a>
+                <h3><a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 1">Bicis 1</a></h3>
+                <a href="assets/img/portfolio/porfolio-99.jpg" data-gall="portfolioGallery" class="venobox" title="Bicis 1"><i class="icofont-plus"></i></a>
               </div>
             </div>
           </div>
@@ -299,8 +286,7 @@ session_start();
               <a href="https://twitter.com/explore" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="https://www.instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i
-                  class="bx bxl-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/cristian-ledesma-452137162/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
 

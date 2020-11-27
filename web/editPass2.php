@@ -20,7 +20,7 @@ try {
     $con = $conexion->prepare($query);
     $con->execute();
 
-    header("location:../index.php?Var=3");
+    header("location:../index.php?Var=7");
 
     
 

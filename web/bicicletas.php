@@ -5,7 +5,7 @@ if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
 else :
-    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) : ?>
+    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) : ?>
 
 <html lang="en">
 
@@ -84,33 +84,47 @@ else :
 
 
             switch ($rol) {
-              case 1:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='editUsu.php'>Admin</a></li>";
-                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='entrega.php'>Entrega</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
-              case 2:
-                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
-                echo "<ul>";
-                echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
-                echo "<li><a href='reserva.php'>Reserva</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
-                echo "<li><a href='historial.php'>Historial</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
-                echo "</ul>";
-                echo "</li>";
-                break;
+                case 1:
+                    echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                    echo "<ul>";
+                    echo "<li><a href='editUsu.php'>Super admin</a></li>";
+                    echo "<li><a href='creaAdmin.php'>Crear admin</a></li>";
+                    echo "<li><a href='auditoria.php'>Auditoria</a></li>";
+                    echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                    echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                    echo "<li><a href='bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                    echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                    echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                    echo "</ul>";
+                    echo "</li>";
+                    break;
+                  case 2:
+                    echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                    echo "<ul>";
+                    echo "<li><a href='editUsu.php'>Admin</a></li>";
+                    echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                    echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                    echo "<li><a href='bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                    echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                    echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                    echo "</ul>";
+                    echo "</li>";
+                    break;
+                  case 3:
+                    echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                    echo "<ul>";
+                    echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
+                    echo "<li><a href='reserva.php'>Reserva</a></li>";
+                    echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                    echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
+                    echo "<li><a href='historial.php'>Historial</a></li>";
+                    echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                    echo "</ul>";
+                    echo "</li>";
+                    break;
+                }
             }
-          } else {
+           else {
             echo "<li class='drop-down'><a href='#'>Login</a>";
             echo "<ul>";
             echo "<li><a href='web/registro.php'>Registrarse</a></li>";

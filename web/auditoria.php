@@ -5,7 +5,7 @@ if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
 else :
-    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) : ?>
+    if ($_SESSION['id_rol'] == 1) : ?>
 
         <html lang="en">
 
@@ -13,7 +13,7 @@ else :
             <meta charset="utf-8">
             <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-            <title>West Ecobicis - Reserva</title>
+            <title>West Ecobicis - Bicicletas </title>
             <meta content="" name="descriptison">
             <meta content="" name="keywords">
 
@@ -44,18 +44,6 @@ else :
   ======================================================== -->
 
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-            <style type="text/css">
-                #mapa {
-                    height: 50vh;
-                }
-
-                .h2s {
-                    font-size: 20px;
-                    padding-right: 4px;
-                    color: #212529;
-                }
-            </style>
 
         </head>
 
@@ -92,8 +80,8 @@ else :
                                         echo "<li><a href='auditoria.php'>Auditoria</a></li>";
                                         echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                                         echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='bicicleteroABM.php'>Bicicleteros ABM</a></li>";
                                         echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                                        echo "<li><a href='entrega.php'>Entrega</a></li>";
                                         echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                                         echo "</ul>";
                                         echo "</li>";
@@ -104,8 +92,8 @@ else :
                                         echo "<li><a href='editUsu.php'>Admin</a></li>";
                                         echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                                         echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='bicicleteroABM.php'>Bicicleteros ABM</a></li>";
                                         echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                                        echo "<li><a href='entrega.php'>Entrega</a></li>";
                                         echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                                         echo "</ul>";
                                         echo "</li>";
@@ -113,12 +101,12 @@ else :
                                     case 3:
                                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                                         echo "<ul>";
-                                        echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
-                                        echo "<li><a href='reserva.php'>Reserva</a></li>";
-                                        echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                                        echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
-                                        echo "<li><a href='historial.php'>Historial</a></li>";
-                                        echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                        echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
+                                        echo "<li><a href='web/reserva.php'>Reserva</a></li>";
+                                        echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
+                                        echo "<li><a href='web/historial.php'>Historial</a></li>";
+                                        echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                                         echo "</ul>";
                                         echo "</li>";
                                         break;
@@ -146,98 +134,219 @@ else :
                     <div class="container">
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <h2>Reserva</h2>
+                            <h2>Auditoria</h2>
                             <ol>
                                 <li><a href="../index.php">Home</a></li>
-                                <li>Reserva</li>
+                                <li>Auditoria</li>
                             </ol>
                         </div>
-                        </br>
-                        <h6>Solo se pueden utilizar las estaciones que aparezcan en pantalla, si a usted no le aparece una estacion eso quiere decir que no hay ecobicis disponibles en el bicicletero.</h6>
+
                     </div>
                 </section><!-- End About Us Section -->
 
                 <div class="reservation">
-                    <div class="section-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="booking-form">
-                                    <br />
-                                    <form class="col-10 p-4 border border-warning" action="../web/reserva2.php" method="post">
-                                        <div class="form-group">
-                                            <div class="col-auto my-1">
-                                                <label class="mr-sm-2" for="inlineFormCustomSelect">Salida</label>
+                    <br>
+                    <!-- ======= Maps ======= -->
+                    <div class="map mt-2">
+                        <div class="col-md-14">
 
-                                                <?php
-                                                $conexion = mysqli_connect("localhost", "root", "");
+                            <h2 class="h2s">Datos antiguos</h2>
+                            <br>
+                            <?php
 
-                                                mysqli_select_db($conexion, "ecobicis") or die("no se encuentra la base de datos");
+                            include('map/conexion.php');
 
-                                                echo '<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="origen">';
-                                                $query = "SELECT estaciones.estacion, estaciones.id_estacion from estaciones INNER JOIN bicicletero ON bicicletero.disponibles != 0 && bicicletero.estado =1 && estaciones.id_estacion = bicicletero.fk_estacion";
-                                                $resultado = mysqli_query($conexion, $query);
-                                                while (($row = mysqli_fetch_array($resultado)) == true) {
-                                                    echo '<OPTION VALUE="' . $row['id_estacion'] . '">' . $row['estacion'] . '</OPTION>';
-                                                }
-                                                ?>
-                                                </select>
+                            // Listamos de las estaciones y direcciones
+                            $result = mysqli_query($con, "SELECT * from act_bicicletero");
 
-                                            </div>
-                                        </div>
+                            // Creamos una tabla para listar los datos 
+                            echo "<div class='table-responsive'>";
 
-                                        <div class="form-group">
-                                            <div class="col-auto my-1">
-                                                <label class="mr-sm-2" for="inlineFormCustomSelect">Llegada</label>
-                                                <?php
-                                                $conexion = mysqli_connect("localhost", "root", "");
+                            echo "<table class='table table-dark'>
+                            <thead class='thead-dark'>
+                                <tr>
+                                <th scope='col'>Id</th>
+                                <th scope='col'>Estacion</th>
+                                <th scope='col'>Dirección</th>
+                                <th scope='col'>Latitud</th>
+                                <th scope='col'>Longitud</th>
+                                <th scope='col'>Pais</th>
+                                <th scope='col'>Stock</th>
+                                <th scope='col'>Disponibles</th>
+                                <th scope='col'>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
 
-                                                mysqli_select_db($conexion, "ecobicis") or die("no se encuentra la base de datos");
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo "<tr>";
+                                echo "<td scope='col'>". $row['id_bicicletero_old'] ."</td>";
+                                switch ($row['fk_estacion_old']) {
+                                    case 1:
+                                        echo "<td scope='col'> Moreno </td>";
+                                        break;
+                                    case 2:
+                                        echo "<td scope='col'> Paso del Rey </td>";
+                                        break;
+                                    case 3:
+                                        echo "<td scope='col'> Merlo </td>";
+                                        break;
+                                    case 4:
+                                        echo "<td scope='col'> Padua </td>";
+                                        break;
+                                    case 5:
+                                        echo "<td scope='col'> Ituzaingo </td>";
+                                        break;
+                                    case 6:
+                                        echo "<td scope='col'> Castelar </td>";
+                                        break;
+                                    case 7:
+                                        echo "<td scope='col'> Moron </td>";
+                                        break;
+                                    case 8:
+                                        echo "<td scope='col'> Haedo </td>";
+                                        break;
+                                    case 9:
+                                        echo "<td scope='col'> Ramos Mejia </td>";
+                                        break;
+                                    case 10:
+                                        echo "<td scope='col'> Ciudadela </td>";
+                                        break;
+                                    case 11:
+                                        echo "<td scope='col'> Liniers </td>";
+                                        break;
+                                    case 12:
+                                        echo "<td scope='col'> Villa Luro </td>";
+                                        break;
+                                    case 13:
+                                        echo "<td scope='col'> Floresta </td>";
+                                        break;
+                                    case 14:
+                                        echo "<td scope='col'> Flores </td>";
+                                        break;
+                                    case 15:
+                                        echo "<td scope='col'> Caballito </td>";
+                                        break;
+                                    case 16:
+                                        echo "<td scope='col'> Once </td>";
+                                        break;
+                                }
+                                echo "<td scope='col'>" . $row['dirección_old'] . "</td>";
+                                echo "<td scope='col'>" . $row['lat_old'] . "</td>";
+                                echo "<td scope='col'>" . $row['lng_old'] . "</td>";
+                                echo "<td scope='col'>" . $row['pais_old'] . "</td>";
+                                echo "<td scope='col'>" . $row['stock_old'] . "</td>";
+                                echo "<td scope='col'>" . $row['disponibles_old'] . "</td>";
+                                if ($row['estado_old'] == 0) {
+                                    echo "<td scope='col'>Inactivo</td>";
+                                } else {
+                                    echo "<td scope='col'>Activo</td>";
+                                }
+                                echo "</tr>";
+                            }
+                            echo "</tbody></table>";
 
-                                                echo '<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="destino">';
-                                                $query = "SELECT * FROM estaciones";
-                                                $resultado = mysqli_query($conexion, $query);
-                                                while (($row = mysqli_fetch_array($resultado)) == true) {
-                                                    echo '<OPTION VALUE="' . $row['id_estacion'] . '">' . $row['estacion'] . '</OPTION>';
-                                                }
-                                                ?>
-                                                </select>
-                                            </div>
-                                            <br />
-                                            <div class="form-btn">
-                                                <button class="submit-btn">A pedalear !</button>
-                                            </div>
+                            echo "<h2 class='h2s'>Datos nuevos</h2>";
 
-                                        </div>
-                                    </form>
-                                    <br />
-                                </div>
-                            </div>
+                            echo "<table class='table table-dark'>
+                            <thead class='thead-dark'>
+                                <tr>
+                                <th scope='col'>Id</th>
+                                <th scope='col'>Estacion</th>
+                                <th scope='col'>Dirección</th>
+                                <th scope='col'>Latitud</th>
+                                <th scope='col'>Longitud</th>
+                                <th scope='col'>Pais</th>
+                                <th scope='col'>Stock</th>
+                                <th scope='col'>Disponibles</th>
+                                <th scope='col'>Estado</th>
+                                <th scope='col'>Usuario</th>
+                                <th scope='col'>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
+
+                            $result2 = mysqli_query($con, "SELECT * from act_bicicletero");
+
+                            while ($row2 = mysqli_fetch_array($result2)) {
+                                echo "<tr>";
+                                echo "<td scope='col'> ". $row2['id_bicicletero_new'] ." </td>";
+                                switch ($row2['fk_estacion_new']) {
+                                    case 1:
+                                        echo "<td scope='col'> Moreno </td>";
+                                        break;
+                                    case 2:
+                                        echo "<td scope='col'> Paso del Rey </td>";
+                                        break;
+                                    case 3:
+                                        echo "<td scope='col'> Merlo </td>";
+                                        break;
+                                    case 4:
+                                        echo "<td scope='col'> Padua </td>";
+                                        break;
+                                    case 5:
+                                        echo "<td scope='col'> Ituzaingo </td>";
+                                        break;
+                                    case 6:
+                                        echo "<td scope='col'> Castelar </td>";
+                                        break;
+                                    case 7:
+                                        echo "<td scope='col'> Moron </td>";
+                                        break;
+                                    case 8:
+                                        echo "<td scope='col'> Haedo </td>";
+                                        break;
+                                    case 9:
+                                        echo "<td scope='col'> Ramos Mejia </td>";
+                                        break;
+                                    case 10:
+                                        echo "<td scope='col'> Ciudadela </td>";
+                                        break;
+                                    case 11:
+                                        echo "<td scope='col'> Liniers </td>";
+                                        break;
+                                    case 12:
+                                        echo "<td scope='col'> Villa Luro </td>";
+                                        break;
+                                    case 13:
+                                        echo "<td scope='col'> Floresta </td>";
+                                        break;
+                                    case 14:
+                                        echo "<td scope='col'> Flores </td>";
+                                        break;
+                                    case 15:
+                                        echo "<td scope='col'> Caballito </td>";
+                                        break;
+                                    case 16:
+                                        echo "<td scope='col'> Once </td>";
+                                        break;
+                                }
+                                echo "<td scope='col'>" . $row2['dirección_new'] . "</td>";
+                                echo "<td scope='col'>" . $row2['lat_new'] . "</td>";
+                                echo "<td scope='col'>" . $row2['lng_new'] . "</td>";
+                                echo "<td scope='col'>" . $row2['pais_new'] . "</td>";
+                                echo "<td scope='col'>" . $row2['stock_new'] . "</td>";
+                                echo "<td scope='col'>" . $row2['disponibles_new'] . "</td>";
+                                if ($row2['estado_new'] == 0) {
+                                    echo "<td scope='col'>Inactivo</td>";
+                                } else {
+                                    echo "<td scope='col'>Activo</td>";
+                                }
+                                echo "<td scope='col'>" . $row2['usuario'] . "</td>";
+                                echo "<td scope='col'>" . $row2['fecha_act'] . "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</tbody></table>";
+
+                            echo "</div>";
+
+                            mysqli_close($con);
+
+                            ?>
                         </div>
+
                     </div>
                 </div>
-
-                <!-- ======= Maps ======= -->
-                <div class="map mt-2">
-                    <div class="container-fluid p-0">
-                        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62431.47225415157!2d-58.69773215701035!3d-34.67616159393097!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8aa7762bd43%3A0x3b271874eb632a7a!2sCastelar!5e0!3m2!1ses!2sar!4v1594745792185!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-                    </iframe>-->
-                        <div class="col-md-14">
-                            <div id="mapa"></div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <br>
-
-                    <div class="col-md-14">
-
-                        <h2 class="h2s">Estaciones de los bicicleteros</h2>
-
-                        <!-- Archivo PHP con la lógica para mostrar una tabla con las ubicaciones -->
-                        <?php include('../web/map/app.php'); ?>
-
-                    </div>
-                </div> <!-- End maps -->
             </main> <!-- End #main -->
 
             <!-- ======= Footer ======= -->
@@ -326,79 +435,7 @@ else :
             <!-- Template Main JS File -->
             <script src="../assets/js/main.js"></script>
 
-
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuxHE_mOiVkD4NMDZG9e6p-QQiARidcQo&callback=initMap" async defer></script>
-
-
-            <script type="text/javascript">
-                function initMap() {
-                    var map;
-                    var bounds = new google.maps.LatLngBounds();
-                    var mapOptions = {
-                        mapTypeId: 'roadmap'
-                    };
-
-                    map = new google.maps.Map(document.getElementById('mapa'), {
-                        mapOptions
-                    });
-
-                    map.setTilt(50);
-
-                    // Crear múltiples marcadores desde la Base de Datos 
-                    var marcadores = [
-                        <?php include('../web/map/marcadores.php'); ?>
-                    ];
-
-                    // Creamos la ventana de información para cada Marcador
-                    var ventanaInfo = [
-                        <?php include('../web/map/info_marcadores.php'); ?>
-                    ];
-
-                    // Creamos la ventana de información con los marcadores 
-                    var mostrarMarcadores = new google.maps.InfoWindow(),
-                        marcadores, i;
-
-                    // Colocamos los marcadores en el Mapa de Google 
-                    for (i = 0; i < marcadores.length; i++) {
-                        var position = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
-                        bounds.extend(position);
-                        marker = new google.maps.Marker({
-                            position: position,
-                            map: map,
-                            title: marcadores[i][0],
-                        });
-
-                        // Colocamos la ventana de información a cada Marcador del Mapa de Google 
-                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                            return function() {
-                                mostrarMarcadores.setContent(ventanaInfo[i][0]);
-                                mostrarMarcadores.open(map, marker);
-                            }
-                        })(marker, i));
-
-                        // Centramos el Mapa de Google para que todos los marcadores se puedan ver 
-                        map.fitBounds(bounds);
-                    }
-
-                    // Aplicamos el evento 'bounds_changed' que detecta cambios en la ventana del Mapa de Google, también le configramos un zoom de 14 
-                    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-                        this.setZoom(14);
-                        google.maps.event.removeListener(boundsListener);
-                    });
-
-                }
-
-                // Lanzamos la función 'initMap' para que muestre el Mapa con Los Marcadores y toda la configuración realizada 
-                google.maps.event.addDomListener(window, 'load', initMap);
-            </script>
-
-
-        </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+        </body>
 
         </html>
 

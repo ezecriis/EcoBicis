@@ -6,7 +6,7 @@ if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
 else :
-    if ($_SESSION['id_rol'] == 1) : ?>
+    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) : ?>
 
         <html lang="es">
 
@@ -85,7 +85,9 @@ else :
                                     case 1:
                                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                                         echo "<ul>";
-                                        echo "<li><a href='editUsu.php'>Admin</a></li>";
+                                        echo "<li><a href='editUsu.php'>Super admin</a></li>";
+                                        echo "<li><a href='creaAdmin.php'>Crear admin</a></li>";
+                                        echo "<li><a href='auditoria.php'>Auditoria</a></li>";
                                         echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                                         echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                                         echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
@@ -95,7 +97,20 @@ else :
                                         echo "</ul>";
                                         echo "</li>";
                                         break;
-                                    case 2:
+                                        case 2:
+                                            echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                            echo "<ul>";
+                                            echo "<li><a href='editUsu.php'>Admin</a></li>";
+                                            echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                            echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                            echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                                            echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                            echo "<li><a href='entrega.php'>Entrega</a></li>";
+                                            echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                            echo "</ul>";
+                                            echo "</li>";
+                                            break;
+                                    case 3:
                                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                                         echo "<ul>";
                                         echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
@@ -147,10 +162,13 @@ else :
                 <table id="data_table" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
-                            <th>Origen</th>
-                            <th>Destino</th>
-                            <th>Entrega</th>
+                            <th>Cuil</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Estado</th>
+                            <th>Genero</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,7 +180,7 @@ else :
                             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             $conexion->exec("SET CHARACTER SET UTF8");
 
-                            $sql = "SELECT usuarios.cuil, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono, usuarios.estado, genero.genero, roles.rol FROM usuarios INNER JOIN genero INNER JOIN roles ON usuarios.fk_genero = genero.id_genero && usuarios.id_rol = roles.id_rol";
+                            $sql = "SELECT usuarios.cuil, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono, usuarios.estado, genero.genero, roles.rol FROM usuarios INNER JOIN genero INNER JOIN roles ON usuarios.fk_genero = genero.id_genero && usuarios.id_rol = roles.id_rol && usuarios.id_rol != 1";
                             $consulta = $conexion->prepare($sql);
                             $consulta->execute();
 

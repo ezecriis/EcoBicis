@@ -7,7 +7,7 @@ if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
 else :
-    if ($_SESSION['id_rol'] == 1) : ?>
+    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) : ?>
 
         <html lang="en">
 
@@ -80,6 +80,18 @@ else :
                                         echo "</li>";
                                         break;
                                     case 2:
+                                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                        echo "<ul>";
+                                        echo "<li><a href='editUsu.php'>Admin</a></li>";
+                                        echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                        echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='web/bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                                        echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                        echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                        echo "</ul>";
+                                        echo "</li>";
+                                        break;
+                                    case 3:
                                         echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                                         echo "<ul>";
                                         echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
@@ -160,7 +172,7 @@ else :
 
                                 <div class="col-5 p-4 border border-warning" id="nuevoCliente">
                                     <h4 aling="center">Modificar bicicletero</h4>
-                                    <form action="../web/modificarBicicletero2.php" method="post">
+                                    <form action="modificarBicicletero2.php" method="post">
                                         <div class="form-group">
                                             <label>Estacion:</label>
                                             <input class="form-control" type="text" name="estacion" disabled required value="<?php echo $filas['estacion'] ?>">
@@ -178,21 +190,21 @@ else :
                                             <input class="form-control" type="number" name="stock" required value="<?php echo $filas['stock'] ?>">
                                         </div>
                                         <br>
-                                        <button type="button" class="btn btn-secondary">Modificar</button>
-                                        <br>
-                                        <br>
-                                        <div class="form-group">
-                                            <label class="btn btn-secondary">Estado: </label>
-                                            <?php
-                                            if ($filas['estado'] == 0) {
-                                                echo "<td><button type='button' class='btn btn-outline-primary'><a href='altaEstacion.php?id=" . $filas['id'] . "'>Alta estacion</a></button></td>";
-                                            } else {
-                                                echo "<td><button type='button' class='btn btn-outline-danger'><a href='bajaEstacion.php?id=" . $filas['id'] . "'>Baja estacion</a></button></td>";
-                                            }
-                                            ?>
-
-                                        </div>
+                                        <button type="submit" class="btn btn-secondary">Modificar</button>
                                     </form>
+                                    <br>
+                                    <br>
+                                    <div class="form-group">
+                                        <label class="btn btn-secondary">Estado: </label>
+                                        <?php
+                                        if ($filas['estado'] == 0) {
+                                            echo "<td><button type='button' class='btn btn-outline-primary'><a href='altaEstacion.php?id=" . $filas['id'] . "'>Alta estacion</a></button></td>";
+                                        } else {
+                                            echo "<td><button type='button' class='btn btn-outline-danger'><a href='bajaEstacion.php?id=" . $filas['id'] . "'>Baja estacion</a></button></td>";
+                                        }
+                                        ?>
+
+                                    </div>
                                 </div>
                                 <div class="col">
                                 </div>

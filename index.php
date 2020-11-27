@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-// session_set_cookie_params(60); // 1ms de inactividad
-//if (empty($_SESSION['nombre'])) {
-//    echo "INICIA SESION";
-//}
+
 ?>
 <html lang="en">
 
@@ -70,7 +67,9 @@ session_start();
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/editUsu.php'>Super admin</a></li>";
+                echo "<li><a href='web/creaAdmin.php'>Crear admin</a></li>";
+                echo "<li><a href='web/auditoria.php'>Auditoria</a></li>";
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
@@ -80,6 +79,18 @@ session_start();
                 echo "</li>";
                 break;
               case 2:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 3:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
@@ -128,15 +139,18 @@ session_start();
               case 3:
                 echo "<div class='alert alert-success' role='alert'>¡No se puede hacer la reserva !</div>";
                 break;
-                case 4:
-                  echo "<div class='alert alert-success' role='alert'>Usted no tiene permiso para acceder a este sitio. </div>";
+              case 4:
+                echo "<div class='alert alert-success' role='alert'>Usted no tiene permiso para acceder a este sitio. </div>";
                 break;
-                case 5:
-                  echo "<div class='alert alert-success' role='alert'>Usted ha hecho una reserva con una ecobici. </div>";
+              case 5:
+                echo "<div class='alert alert-success' role='alert'>Usted ha hecho una reserva con una ecobici. </div>";
                 break;
-                case 6:
-                  echo "<div class='alert alert-success' role='alert'>Se ha entregado la ecobici, GRACIAS. </div>";
+              case 6:
+                echo "<div class='alert alert-success' role='alert'>Se ha entregado la ecobici, GRACIAS. </div>";
                 break;
+                case 7:
+                  echo "<div class='alert alert-success' role='alert'>Su password se ha cambiado! </div>";
+                  break;
             }
           }
           ?>

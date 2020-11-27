@@ -53,7 +53,7 @@ session_start();
           <li><a href="../services.php">Services</a></li>
           <li><a href="../portfolio.php">Portfolio</a></li>
           <li><a href="../contact.php">Contacto</a></li>
-           <?php
+          <?php
 
           if (!empty($_SESSION['id_rol'])) {
 
@@ -64,7 +64,9 @@ session_start();
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='editUsu.php'>Admin</a></li>";
+                echo "<li><a href='editUsu.php'>Super admin</a></li>";
+                echo "<li><a href='creaAdmin.php'>Crear admin</a></li>";
+                echo "<li><a href='auditoria.php'>Auditoria</a></li>";
                 echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                 echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
@@ -73,6 +75,17 @@ session_start();
                 echo "</li>";
                 break;
               case 2:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='editUsu.php'>Admin</a></li>";
+                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 3:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
                 echo "<li><a href='editUsu.php'>Mi Cuenta</a></li>";
@@ -139,20 +152,20 @@ session_start();
               <h4 aling="center">Cambio de Contraseña</h4>
               <form action="../web/editPass2.php" method="post">
                 <div class="form-group">
-                    <label>Nueva Contraseña:</label>
-                    <input class="form-control" type="password" name="npass" minlength="5" required>
-                    <label>Confirmar Contraseña:</label>
-                    <input class="form-control" type="password" name="rpass" minlength="5" required>
+                  <label>Nueva Contraseña:</label>
+                  <input class="form-control" type="password" name="npass" minlength="5" required>
+                  <label>Confirmar Contraseña:</label>
+                  <input class="form-control" type="password" name="rpass" minlength="5" required>
                 </div>
                 <br />
                 <div class="form-group">
                   <button class="btn btn-success btn-sm btn-block" type="submit" name="enviar" id="enviar">Modificar</button>
                 </div>
               </form>
-               <?php
-                if (isset($_GET['error']) == 1) {
+              <?php
+              if (isset($_GET['error']) == 1) {
                 echo "<div class='alert alert-danger' role='alert'>Las contraseñas no son iguales.</div>";
-                }
+              }
               ?>
               <br>
               <br>

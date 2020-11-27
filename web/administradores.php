@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$cuil = $_SESSION['cuil'];
 if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
@@ -13,7 +14,7 @@ else :
             <meta charset="utf-8">
             <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-            <title>West Ecobicis - Mi cuenta </title>
+            <title>West Ecobicis - Admin </title>
             <meta content="" name="descriptison">
             <meta content="" name="keywords">
 
@@ -36,7 +37,24 @@ else :
             <!-- Template Main CSS File -->
             <link href="../assets/css/style.css" rel="stylesheet">
 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
         </head>
+
+        <script type="text/javascript">
+            function confirmacionBorrar() {
+                var mensaje = confirm("¿Está seguro de que quiere cambiar el estado del usuario?");
+
+                if (mensaje == true) {
+                    return true;
+
+                } else {
+                    return false;
+                }
+
+            }
+        </script>
 
         <body>
 
@@ -54,10 +72,67 @@ else :
                         <ul>
                             <li class="active"><a href="../index.php">Inicio</a></li>
                             <li><a href="../about.php">Sobre nosotros</a></li>
-                            <li><a href="../servicio.php">Services</a></li>
                             <li><a href="../portfolio.php">Portfolio</a></li>
                             <li><a href="../contact.php">Contacto</a></li>
-                            <?php include 'barraNav.php'
+                            <?php
+
+                            if (!empty($_SESSION['id_rol'])) {
+
+                                $rol = $_SESSION['id_rol'];
+
+
+                                switch ($rol) {
+                                    case 1:
+                                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                        echo "<ul>";
+                                        echo "<li><a href='web/editUsu.php'>Super admin</a></li>";
+                                        echo "<li><a href='web/creaAdmin.php'>Crear admin</a></li>";
+                                        echo "<li><a href='web/auditoria.php'>Auditoria</a></li>";
+                                        echo "<li><a href='editUsu.php'>Admin</a></li>";
+                                        echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                        echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                                        echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                        echo "<li><a href='entrega.php'>Entrega</a></li>";
+                                        echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                        echo "</ul>";
+                                        echo "</li>";
+                                        break;
+                                        case 2:
+                                            echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                            echo "<ul>";
+                                            echo "<li><a href='editUsu.php'>Admin</a></li>";
+                                            echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
+                                            echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                            echo "<li><a href='bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                                            echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
+                                            echo "<li><a href='entrega.php'>Entrega</a></li>";
+                                            echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                                            echo "</ul>";
+                                            echo "</li>";
+                                            break;
+                                    case 3:
+                                        echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                                        echo "<ul>";
+                                        echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
+                                        echo "<li><a href='web/reserva.php'>Reserva</a></li>";
+                                        echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
+                                        echo "<li><a href='web/entrega.php'>Entregar bicicleta</a></li>";
+                                        echo "<li><a href='web/historial.php'>Historial</a></li>";
+                                        echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
+                                        echo "</ul>";
+                                        echo "</li>";
+                                        break;
+                                }
+                            } else {
+                                echo "<li class='drop-down'><a href='#'>Login</a>";
+                                echo "<ul>";
+                                echo "<li><a href='web/registro.php'>Registrarse</a></li>";
+                                echo "<li><a href='web/login.php'>Iniciar sesion</a></li>";
+                                echo "</ul>";
+                                echo "</li>";
+                            }
+
                             ?>
                         </ul>
                     </nav><!-- .nav-menu -->
@@ -72,10 +147,10 @@ else :
                     <div class="container">
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <h2>Mis datos</h2>
+                            <h2>Historial de administradores</h2>
                             <ol>
                                 <li><a href="../index.php">Inicio</a></li>
-                                <li>Mi cuenta</li>
+                                <li>Super admin</li>
                             </ol>
                         </div>
 
@@ -84,62 +159,62 @@ else :
 
             </main><!-- End #main -->
 
-            <br>
-            <br>
+            <div class="container home">
+                <table id="data_table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cuil</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Genero</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-            <?php
-            try {
+                        <?php
+                        try {
 
-                $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
-                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $conexion->exec("SET CHARACTER SET UTF8");
+                            $conexion = new PDO("mysql:host=localhost; dbname=ecobicis", "root", "");
+                            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $conexion->exec("SET CHARACTER SET UTF8");
 
-                $sql = "SELECT * FROM usuarios where cuil = " . $_SESSION['cuil'] . "";
-                $consulta = $conexion->prepare($sql);
-                $consulta->execute();
+                            $sql = "SELECT usuarios.cuil, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono, usuarios.estado, genero.genero, roles.rol FROM usuarios INNER JOIN genero INNER JOIN roles ON usuarios.fk_genero = genero.id_genero && usuarios.id_rol = roles.id_rol && usuarios.id_rol = 2";
+                            $consulta = $conexion->prepare($sql);
+                            $consulta->execute();
 
-                echo "<table class = 'table table-striped'>";
-                echo "<tr>";
-                echo "<td><strong>USUARIO</strong></td>";
-                echo "<td><strong>NOMBRE</strong></td>";
-                echo "<td><strong>APELLIDO</strong></td>";
-                echo "<td><strong>CONTRASEÑA</strong></td>";
-                echo "<td><strong>CUIL</strong></td>";
-                echo "<td><strong>CORREO</strong></td>";
-                echo "<td><strong>TELEFONO</strong></td>";
-                echo "<td><strong>SEXO</strong></td>";
-                echo "<td><strong>ACCION</strong></td>";
-                echo "<td>";
-                echo "<td>";
-                echo "</td>";
-                echo "<td>";
-                echo "</td>";
-                echo "</td>";
-                echo "</tr>";
-                while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
-                    echo "<tr>";
-                    echo "<td>" . $fila['id_usuario'] . "</td>";
-                    echo "<td>" . $fila['nombre'] . "</td>";
-                    echo "<td>" . $fila['apellido'] . "</td>";
-                    echo "<td>" . $fila['password'] . "</td>";
-                    echo "<td>" . $fila['cuil'] . "</td>";
-                    echo "<td>" . $fila['email'] . "</td>";
-                    echo "<td>" . $fila['telefono'] . "</td>";
-                    echo "<td>" . $fila['sexo'] . "</td>";
-                    echo "<td><button type='button' class='btn btn-primary btn-rounded btn-sm my-0'><a href='editarUsuario.php'>Editar</button></td>";
-                    echo "</tr>";
-                }
+                            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
 
-                echo "</table>";
-            } catch (Exception $ex) {
-                echo $ex->getMessage();
-                echo $ex->getLine();
-            }
-            ?>
+                                echo "<tr>";
+                                echo "<td>" . $fila['cuil'] . "</td>";
+                                echo "<td>" . $fila['nombre'] . "</td>";
+                                echo "<td>" . $fila['apellido'] . "</td>";
+                                echo "<td>" . $fila['email'] . "</td>";
+                                echo "<td>" . $fila['telefono'] . "</td>";
+                                echo "<td>" . $fila['genero'] . "</td>";
+                                echo "<td>" . $fila['rol'] . "</td>";
+                                if ($fila['estado'] == 1) {
+                                    echo "<td>Activo</td>";
+                                    echo "<td><button type='button' class='btn btn-danger btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='removerUsuario.php?cuil=" . $fila['cuil'] . "'>Remover</a></button></td>";
+                                } else {
+                                    echo "<td>Inactivo</td>";
+                                    echo "<td><button type='button' class='btn btn-green btn-rounded btn-sm my-0' onclick='return confirmacionBorrar()'><a href='altaUsuario.php?cuil=" . $fila['cuil'] . "'>Dar de alta</a></button></td>";
+                                }
+                                echo "</tr>";
+                            }
 
-            <br>
-            <br>
+                            echo "</table>";
+                        } catch (Exception $ex) {
+                            echo $ex->getMessage();
+                            echo $ex->getLine();
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
+            </div>
 
             <!-- ======= Footer ======= -->
             <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
@@ -221,6 +296,8 @@ else :
         </body>
 
         </html>
+
+        <script src="./ecobicis/web/tableEdit.js"></script>
 
 <?php else :
         header("location:../index.php?Var=4");

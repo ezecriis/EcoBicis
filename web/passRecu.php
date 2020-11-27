@@ -61,14 +61,30 @@
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='historialUsuarios.php'>Usuarios</a></li>";
-                echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
+                echo "<li><a href='web/editUsu.php'>Super admin</a></li>";
+                echo "<li><a href='web/creaAdmin.php'>Crear admin</a></li>";
+                echo "<li><a href='web/auditoria.php'>Auditoria</a></li>";
+                echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
                 echo "</li>";
                 break;
-              case 2:
+                case 2:
+                  echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                  echo "<ul>";
+                  echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                  echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                  echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                  echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                  echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                  echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                  echo "</ul>";
+                  echo "</li>";
+                  break;
+              case 3:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";

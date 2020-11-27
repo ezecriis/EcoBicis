@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-// session_set_cookie_params(60); // 1ms de inactividad
-//if (empty($_SESSION['nombre'])) {
-//    echo "INICIA SESION";
-//}
+
 ?>
 <html lang="en">
 
@@ -65,25 +62,35 @@ session_start();
           <?php
 
           if (!empty($_SESSION['id_rol'])) {
-
             $rol = $_SESSION['id_rol'];
-
-
             switch ($rol) {
               case 1:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
-                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/editUsu.php'>Super admin</a></li>";
+                echo "<li><a href='web/creaAdmin.php'>Crear admin</a></li>";
+                echo "<li><a href='web/auditoria.php'>Auditoria</a></li>";
                 echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
                 echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
-                echo "<li><a href='web/bicicleteroABM.php'>Bicicletero ABM</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
                 echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
-                echo "<li><a href='web/entrega.php'>Entrega</a></li>";
                 echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
                 echo "</ul>";
                 echo "</li>";
                 break;
               case 2:
+                echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
+                echo "<ul>";
+                echo "<li><a href='web/editUsu.php'>Admin</a></li>";
+                echo "<li><a href='web/historialUsuarios.php'>Usuarios</a></li>";
+                echo "<li><a href='web/bicicletas.php'>Bicicletas</a></li>";
+                echo "<li><a href='web/bicicleteroABM.php'>Bicicleteros ABM</a></li>";
+                echo "<li><a href='web/historialReservas.php'>Historial Reservas</a></li>";
+                echo "<li><a href='web/logout.php'>Cerrar sesion</a></li>";
+                echo "</ul>";
+                echo "</li>";
+                break;
+              case 3:
                 echo "<li class='drop-down'><a href='#'>" . $_SESSION['nombre'] . "</a>";
                 echo "<ul>";
                 echo "<li><a href='web/editUsu.php'>Mi Cuenta</a></li>";
@@ -104,7 +111,6 @@ session_start();
             echo "</ul>";
             echo "</li>";
           }
-
           ?>
         </ul>
       </nav><!-- .nav-menu -->
@@ -140,7 +146,7 @@ session_start();
           <div class="col-lg-6 pt-4 pt-lg-0">
             <h3>Somos un equipo dedicados al bien estar del planeta.</h3>
             <p class="font-italic">
-              Con el fin de desarrollar herramientas para el ecosistema.. 
+              Con el fin de desarrollar herramientas para el ecosistema..
             </p>
             <ul>
               <li><i class="icofont-check-circled"></i> Nos guiamos y orientamos a nuestros clientes a no dañar mas el ecosistema.</li>
@@ -149,8 +155,8 @@ session_start();
             </ul>
             <p>
               Con el fin de ño dañar el planeta tierra, comenzamos a emprender este pequeño cambio para la sociedad,
-              la idea es que se descontamine el planeta tierra, asi descongestionando la via publica de vehiculos y 
-              poder bicletear en tu bicicleta sustentable. 
+              la idea es que se descontamine el planeta tierra, asi descongestionando la via publica de vehiculos y
+              poder bicletear en tu bicicleta sustentable.
             </p>
           </div>
         </div>

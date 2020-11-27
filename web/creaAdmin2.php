@@ -60,12 +60,12 @@ try {
 
         // Content
         $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = 'SE HA REGISTRADO CON EXITO! BIENVENIDO A ECOBICIS';
-        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $password . '<br>' . '<br>' . '</b>';
+        $mail->Subject = 'BIENVENIDO AL TEAM DE ECOBICIS, USTED ES ADMIN';
+        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: LA PASSWORD ES TU DNI, recorda cambiarla desde tu cuenta. ' . '<br>' . '</b>';
         $mail->CharSet = 'UTF-8'; // Charset of characters.
         $mail->send(); // Send mail.
 
-        $sql = "INSERT INTO usuarios (cuil, nombre, apellido, password, email, fk_genero, telefono, id_rol, estado) VALUES ('$cuil', '$nombre', '$apellido', '$password', '$email', '$genero', '$telefono', '3', '1')";
+        $sql = "INSERT INTO usuarios (cuil, nombre, apellido, password, email, fk_genero, telefono, id_rol, estado) VALUES ('$cuil', '$nombre', '$apellido', '$password', '$email', '$genero', '$telefono', '2', '1')";
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
         header("location:../index.php?Var=8");
