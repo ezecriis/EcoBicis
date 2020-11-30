@@ -32,17 +32,21 @@ try {
     $conexion->exec("SET CHARACTER SET UTF8");
 
     $query = "SELECT * FROM usuarios where email ='$email' or cuil='$cuil'";
-    // $queryCuil = "SELECT * FROM usuarios where cuil ='$cuil'";
     $con = $conexion->prepare($query);
     $con->execute();
 
     $r = $con->fetch(PDO::FETCH_ASSOC);
 
-    // $pass_descifrada = password_verify($pass, $r['password']);
-
     if ($r['email'] == $email || $r['cuil'] == $cuil) {
         header("location:../web/registro.php?error=7");
     } else {
+
+        $query2 = "SELECT genero FROM genero where id_genero ='$genero'";
+        $con2 = $conexion->prepare($query2);
+        $con2->execute();
+
+        $r2 = $con2->fetch(PDO::FETCH_ASSOC);
+        $genero2 = $r2['genero'];
 
         //Server settings
         $mail->SMTPDebug = 0;                            // Enable verbose debug output
@@ -61,7 +65,7 @@ try {
         // Content
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'SE HA REGISTRADO CON EXITO! BIENVENIDO A ECOBICIS';
-        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $password . '<br>' . '<br>' . '</b>';
+        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero2 . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $password . '<br>' . '<br>' . '</b>';
         $mail->CharSet = 'UTF-8'; // Charset of characters.
         $mail->send(); // Send mail.
 
