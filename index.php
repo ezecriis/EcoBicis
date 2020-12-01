@@ -151,6 +151,9 @@ session_start();
                 case 7:
                   echo "<div class='alert alert-success' role='alert'>Su password se ha cambiado! </div>";
                   break;
+                case 2:
+                  echo "<div class='alert alert-success' role='alert'>Sus datos se han cambiado con exito! </div>";
+                  break;
             }
           }
           ?>

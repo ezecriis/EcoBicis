@@ -5,7 +5,7 @@ if (empty($_SESSION['cuil'])) :
 
     header("location:login.php?Error=5");
 else :
-    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3): ?>
+    if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) : ?>
 
         <html lang="en">
 
@@ -106,7 +106,7 @@ else :
                                         echo "<li><a href='bicicletas.php'>Bicicletas</a></li>";
                                         echo "<li><a href='entrega.php'>Entregar bicicleta</a></li>";
                                         echo "<li><a href='historial.php'>Historial</a></li>";
-                                        echo "<li><a href='../logout.php'>Cerrar sesion</a></li>";
+                                        echo "<li><a href='logout.php'>Cerrar sesion</a></li>";
                                         echo "</ul>";
                                         echo "</li>";
                                         break;
@@ -157,22 +157,45 @@ else :
                                 <br />
                                 <br />
                                 <br />
-                                <form action="entrega2.php" class="col-12 p-4 border border-warning" method="post">
-                                    <div class="form-group">
-                                        <span class="login-leters">Cuil</span>
-                                        <input class="form-control" name="cuil" type="text" placeholder="Escriba su cuil">
-                                    </div>
-                                    <div class="form-btn">
-                                        <button class="submit-btn">Entregar ecobici</button>
-                                    </div>
-                                </form>
-                                <br />
-                                <br />
-                                <br />
+
+                                <?php
+                                $cuil = $_SESSION['cuil'];
+                                $mysqli = new mysqli("localhost", "root", "", "ecobicis");
+
+                                /* verificar la conexión */
+                                if (mysqli_connect_errno()) {
+                                    printf("Conexión fallida: %s\n", mysqli_connect_error());
+                                    exit();
+                                }
+
+                                $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
+
+                                /* determinar el número de filas del resultado */
+                                $row_cnt = $result->num_rows;
+
+
+                                echo "<form action='entrega2.php' class='col-12 p-4 border border-warning' method='post'>
+                                    <div class='form-group'>
+                                        <span class='login-leters'>Cuil</span>";
+
+                                if ($row_cnt == 1) {
+                                    echo "<input class='form-control' name='cuil' type='text' placeholder='Escriba su cuil'>";
+                                } else {
+                                    echo "<input class='form-control' name='cuil' type='text' placeholder='Escriba su cuil' disabled>";
+                                }
+                                ?>
                             </div>
+                            <div class="form-btn">
+                                <button class="submit-btn">Entregar ecobici</button>
+                            </div>
+                            </form>
+                            <br />
+                            <br />
+                            <br />
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <!-- ======= Footer ======= -->

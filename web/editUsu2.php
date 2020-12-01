@@ -31,13 +31,9 @@ try {
         $_SESSION['email'] = $r['email'];
         $_SESSION['telefono'] = $r['telefono'];
 
-    header("location:../index.php?Var=3");
+    header("location:../index.php?Var=2");
 
     
-
-    // $pass_descifrada = password_verify($pass, $r['password']);
-
-        
     
 } catch (Exception $ex) {
     echo $ex->getMessage();
