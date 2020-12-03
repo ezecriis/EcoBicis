@@ -65,7 +65,7 @@ try {
         // Content
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'SE HA REGISTRADO CON EXITO! BIENVENIDO A ECOBICIS';
-        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero2 . '<br>' . 'Cuil: ' . $cuil . '<br>' . 'Contraseña: ' . $password . '<br>' . '<br>' . '</b>';
+        $mail->Body    = 'Nombre: ' . $nombre . '<br>' . 'Apellido: ' . $apellido . '<br>' . 'Email: ' . $email . '<br>' . 'Telefono: ' . $telefono . '<br>' . 'Genero: ' . $genero2 . '<br>' . 'Cuil: ' . $cuil . '<br>' . '<br>' . '</b>';
         $mail->CharSet = 'UTF-8'; // Charset of characters.
         $mail->send(); // Send mail.
 

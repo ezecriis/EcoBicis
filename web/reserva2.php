@@ -31,9 +31,9 @@ if (mysqli_connect_errno()) {
 $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
 
   // nro random  
-  $d=mt_rand(1,30);
-  echo $d;
-  printf($d);
+  $NroEntrega=mt_rand(1,30);
+  echo $NroEntrega;
+  printf($NroEntrega);
 
     /* determinar el número de filas del resultado */
     $row_cnt = $result->num_rows;
@@ -46,7 +46,7 @@ $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && 
 
 if ($row_cnt == 0) {
     
-    $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0)");
+    $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega, nro_entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0, '$NroEntrega')");
     $result2 = $mysqli->query("SELECT disponibles FROM bicicletero WHERE fk_estacion = $origen && estado = 1");
     $r = $result2->fetch_assoc();
     $stock = $r['disponibles'];
@@ -73,7 +73,7 @@ if ($row_cnt == 0) {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es individual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . '<br>' . 'GRACIAS POR ELEGIRNOS';                                   // Send mail.
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de esta, es individual y solo se puede reservar una por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $NroEntrega . '<br>' . ' GRACIAS POR ELEGIRNOS';   // Send mail.
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
     $mail->send();
 
@@ -88,7 +88,7 @@ if ($row_cnt == 0) {
     if ($Entrega['entrega'] == 0) {
         header("location:entrega.php");
     } else {
-        $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0)");
+        $result = $mysqli->query("INSERT INTO reservas (fk_cuil, fk_estacion_o, fk_estacion_d, fecha, entrega, nro_entrega) VALUES ('$cuil', '$origen', '$destino', '$fecha', 0, '$NroEntrega')");
         $result2 = $mysqli->query("SELECT disponibles FROM bicicletero WHERE fk_estacion = $origen && estado = 1");
         $r = $result2->fetch_assoc();
         $stock = $r['disponibles'];
@@ -119,7 +119,7 @@ if ($row_cnt == 0) {
     // Content
     $mail->isHTML(true);                             // Set email format to HTML
     $mail->Subject = 'HA INICIADO UN VIAJE CON ECOBICIS';
-    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de las ecobicis es individual y solo se puede reservar una ecobici por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $d . ' GRACIAS POR ELEGIRNOS';
+    $mail->Body    = 'Usted esta en : ' . $OrigenInicio['estacion'] . '<br>' . 'Y viajara a : ' . $DestinoFinal['estacion'] . '<br>' . 'El dia : ' . $fecha . '<br>' . '</b>' . 'El uso de las ecobicis es de 24hs toda la semana. Recuerde que el uso de esta, es individual y solo se puede reservar una por persona, tiene un limite de 5hs para usar la ecobici y devolverla a la estacion de donde la retiro.' . '<br>' . '<br>' . '<br>' . '<br>' . 'Su numero de entrega es: ' . $NroEntrega . '<br>' . ' GRACIAS POR ELEGIRNOS';
     $mail->CharSet = 'UTF-8';                          // Charset of characters.
     $mail->send();                                   // Send mail.
 

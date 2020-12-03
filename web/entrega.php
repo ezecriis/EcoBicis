@@ -158,44 +158,45 @@ else :
                                 <br />
                                 <br />
 
-                                <?php
-                                $cuil = $_SESSION['cuil'];
-                                $mysqli = new mysqli("localhost", "root", "", "ecobicis");
-
-                                /* verificar la conexión */
-                                if (mysqli_connect_errno()) {
-                                    printf("Conexión fallida: %s\n", mysqli_connect_error());
-                                    exit();
-                                }
-
-                                $result = $mysqli->query("SELECT entrega from reservas where fk_cuil = $cuil && entrega = 0");
-
-                                /* determinar el número de filas del resultado */
-                                $row_cnt = $result->num_rows;
-
-
-                                echo "<form action='entrega2.php' class='col-12 p-4 border border-warning' method='post'>
+                                <form action='entrega2.php' class='col-12 p-4 border border-warning' method='post'>
                                     <div class='form-group'>
-                                        <span class='login-leters'>Cuil</span>";
+                                        <span class='login-leters'>Cuil</span>
 
-                                if ($row_cnt == 1) {
-                                    echo "<input class='form-control' name='cuil' type='text' placeholder='Escriba su cuil'>";
-                                } else {
-                                    echo "<input class='form-control' name='cuil' type='text' placeholder='Escriba su cuil' disabled>";
+                                        <input class='form-control' name='cuil' type='text' placeholder='Escriba su cuil'>
+
+                                        <br>
+                                        <div class='form-group'>
+                                            <span class='login-leters'>Nro de entrega</span>
+
+                                            <input class='form-control' name='nro_entrega' type='text' placeholder='Escriba su nro de entrega'>
+                                        </div>
+                                        <div class="form-btn">
+                                            <button class="submit-btn">Entregar ecobici</button>
+                                        </div>
+                                </form>
+
+                                <?php
+
+                                if (isset($_GET['Error'])) {
+                                    switch ($_GET['Error']) {
+                                        case 12:
+                                            echo "<div class='alert alert-success' role='alert'>¡ Cuil invalido con la sesion !</div>";
+                                            break;
+                                        case 13:
+                                            echo "<div class='alert alert-success' role='alert'>¡ Nro de entrega invalido !</div>";
+                                            break;
+                                        case 14:
+                                            echo "<div class='alert alert-success' role='alert'>¡ Este cuil no tiene entregas pendientes !</div>";
+                                            break;
+                                    }
                                 }
                                 ?>
+
                             </div>
-                            <div class="form-btn">
-                                <button class="submit-btn">Entregar ecobici</button>
-                            </div>
-                            </form>
-                            <br />
-                            <br />
-                            <br />
+                            <br>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <!-- ======= Footer ======= -->
